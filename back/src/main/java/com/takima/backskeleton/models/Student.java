@@ -6,12 +6,13 @@ import lombok.Getter;
 import java.time.Instant;
 import java.util.List;
 
-@Entity
-@Table(name = "students")
+//les @ c'est des décorateurs
+@Entity //ce qui permet de dire que la classe à un homologue dans la bdd
+@Table(name = "students") //fait réference à la table corresp
 @Getter
 public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //Pour faire correspondre les clés
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Génére les id
     private Long id;
     @Column(name = "first_name")
     private String firstName;
