@@ -12,8 +12,7 @@ import java.util.List;
 @Getter
 public class Player {
     @Id //Pour faire correspondre les clés
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Génère les id
-    private int id;
+    private long id;
     @Column(name = "pseudo")
     private String pseudo;
     @Column(name = "score")
@@ -23,5 +22,40 @@ public class Player {
 
     public Player (){
 
+    }
+
+    private Player(Builder builder) {
+        this.id = builder.id;
+        this.pseudo = builder.pseudo;
+        this.score = builder.score;
+        this.classement = builder.classement;
+    }
+
+    public static class Builder {
+        private Long id;
+        private String pseudo;
+        private int score;
+        private int classement;
+
+        public Player.Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Player.Builder pseudo(String pseudo) {
+            this.pseudo = pseudo;
+            return this;
+        }
+        public Player.Builder score(int score) {
+            this.score = score;
+            return this;
+        }
+        public Player.Builder classement(int classement) {
+            this.classement = classement;
+            return this;
+        }
+        public Player build() {
+            return new Player(this);
+        }
     }
 }

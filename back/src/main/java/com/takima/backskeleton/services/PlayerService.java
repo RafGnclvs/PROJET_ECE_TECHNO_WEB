@@ -1,7 +1,10 @@
 package com.takima.backskeleton.services;
 
 import com.takima.backskeleton.DAO.PlayerDao;
+import com.takima.backskeleton.DTO.StudentDto;
+import com.takima.backskeleton.DTO.StudentMapper;
 import com.takima.backskeleton.models.Player;
+import com.takima.backskeleton.models.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +24,35 @@ public class PlayerService {
         List <Player> users = new ArrayList<>();
         it.forEach(users::add);
         return users ;
+    }
+
+
+    public Player getById(Long id) {
+        return playerDao.findById(id).orElseThrow();
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        playerDao.deleteById(id);
+    }
+
+    @Transactional
+    public void addPlayer( Player player) {
+        new Player.Builder()
+                .pseudo(player.getPseudo())
+                .score(player.getScore())
+                .classement(player.getClassement())
+                .build();
+
+        playerDao.save(player);
+    }
+
+    @Transactional
+    public void updatePlayer(Player player, Long id) {
+        playerDao.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Player doesn't exist"));
+
+        playerDao.save(player);
     }
 
 }

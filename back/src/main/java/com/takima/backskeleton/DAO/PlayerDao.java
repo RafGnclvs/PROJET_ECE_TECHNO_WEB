@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PlayerDao extends CrudRepository<Player, Integer> {
-    @Query("SELECT p FROM Player p")
-    List<Player> findByPlayerId(int id);
+public interface PlayerDao extends CrudRepository<Player, Long> {
+    @Query("SELECT p FROM Player p  WHERE p.id= :player_id")
+    List<Player> findByPlayerId(int player_id);
 }
