@@ -35,14 +35,16 @@
 
   </table>
 </div>
-</div>
+</div>  <a mat-raised-button color="primary" [routerLink]="['../question-details/',]">Modify</a>
 -->
+
 <div *ngFor="let cate of category">
 
 <p scope="col"> {{cate.name}}</p>
   <div *ngFor="let question of question">
     <div *ngIf="question.id_cat===cate.id_category">
       <p>QUESTION {{question.name_img}}</p>
+      <a mat-raised-button color="primary" [routerLink]="['../question-details/',question.id_cat]">Modify</a>
       <p> GOOD{{question.rep.good_resp}}</p>
     </div>
 

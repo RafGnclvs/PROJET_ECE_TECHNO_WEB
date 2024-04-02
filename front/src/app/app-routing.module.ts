@@ -47,7 +47,7 @@ const routes: Routes = [
   },
   {path : "player", component: PlayerComponent},
   {path : "admin", component: AdminComponent},
-  {path : "question-details", component: QuestionDetailsComponent},
+  {path : "question-details/:id", component: QuestionDetailsComponent},
 ]
 
 @NgModule({
