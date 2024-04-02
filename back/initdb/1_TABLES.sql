@@ -1,4 +1,4 @@
-create table students
+/*create table students
 (
     id SERIAL PRIMARY KEY,
     first_name TEXT not null,
@@ -27,7 +27,7 @@ create table student_course
     id SERIAL PRIMARY KEY,
     student_id int not null,
     course_id int not null
-);
+);*/
 
 create table player
 (

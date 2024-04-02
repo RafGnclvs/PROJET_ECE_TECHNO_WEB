@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core"
+import { StudentService } from "../services/student.service"
+import { Student } from "../models/student.model"
 
 @Component({
   selector: "epf-home",
@@ -7,10 +9,13 @@ import { Component, OnInit } from "@angular/core"
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
+  students : Student[] = [];
+  constructor(private studentService : StudentService) {
+
   }
 
   ngOnInit(): void {
+  this.studentService.findAll().subscribe(tableau => this.students=tableau);
   }
 
 }

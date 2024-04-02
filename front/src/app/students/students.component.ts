@@ -10,10 +10,11 @@ import { StudentService } from "services/student.service"
   styleUrls: ["./students.component.scss"],
 })
 export class StudentsComponent {
-  students$: Observable<Student[]> = this._route.data.pipe(map((data) => data["students"]))
 
-  constructor(private _route: ActivatedRoute, private studentService: StudentService, private router: Router,) {
+  constructor(private studentService: StudentService, private router: Router,) {
   }
+
+  students$: Observable<Student[]> = this.studentService.findAll();
 
   deleteStudent(event: any, student: Student) {
     event.stopPropagation()
