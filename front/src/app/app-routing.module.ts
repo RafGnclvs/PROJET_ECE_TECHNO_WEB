@@ -9,7 +9,7 @@ import { MajorsComponent } from "majors/majors.component"
 import { MajorsResolver } from "majors/majors.resolver"
 import { MajorStudentsResolver } from "majors/major-students/major-students.resolver"
 import { MajorStudentsComponent } from "majors/major-students/major-students.component"
-import { PlayerComponent } from "./player/player.component"
+import { PlayerComponent } from './player/player.component'
 import { AdminComponent } from "./admin/admin.component"
 import { QuestionDetailsComponent } from "./question-details/question-details.component"
 
