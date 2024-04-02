@@ -14,7 +14,11 @@ import { MatIconModule } from "@angular/material/icon"
 import { MatButtonModule } from "@angular/material/button"
 import { MajorsComponent } from "majors/majors.component"
 import { MajorStudentsComponent } from "majors/major-students/major-students.component"
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule } from "@angular/common/http";
+import { PlayerComponent } from './player/player.component';
+import { AdminComponent } from './admin/admin.component';
+import { QuestionDetailsComponent } from './question-details/question-details.component';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +29,9 @@ import { HttpClientModule } from "@angular/common/http"
     StudentDetailsComponent,
     MajorsComponent,
     MajorStudentsComponent,
+    PlayerComponent,
+    AdminComponent,
+    QuestionDetailsComponent
   ],
   imports: [
     BrowserModule,

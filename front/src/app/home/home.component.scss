@@ -1,53 +1,64 @@
-:host {
-  display: flex;
-  align-items: center;
-  margin: 25px;
 
-  .title {
-    text-align: center;
-    font-family: Caveat, sans-serif;
-    font-size: 3.5em;
-    font-weight: 700;
-    margin: 30px 0;
-  }
 
-  p {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 1.3em;
-  }
+body {
+ background-color: #000;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 
-  .left {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+h2
+{
+  color: #FFFFFF;
+  padding-bottom: 150px;
+  text-align: center;
+}
+.logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+#bgvid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
 
-    .sun {
-      width: 90px;
-      margin-left: 35px;
-    }
+  z-index: -1;
+  overflow: hidden;
+  background-size: cover;
+}
+video {
+  display: block;
 
-    .card {
-      border: none;
-      display: flex;
-      align-items: baseline;
+}
+.button {
+  text-align: center;
+  font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix */
+  background-color: #e50914; /* Rouge Netflix */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 
-      .card-text {
-        font-family: "Dancing Script", sans-serif;
-        font-size: x-large;
-        margin-top: 0
-      }
-    }
-  }
+}
 
-  .right {
-    width: 50%;
-    display: flex;
-    justify-content: center;
+.button:hover {
+  transform: translateY(-5px);
+}
 
-    img {
-      width: 80%;
-    }
-  }
+
+#Aide{
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: bold;
 }

@@ -1,3 +1,4 @@
+<!--
 <div class="left">
   <span class="title">Bonjour à toi jeune Peufien !</span>
   <p>Nous sommes heureux de t'accueillir pour ce cours de Java Spring Angular !
@@ -30,3 +31,31 @@
 <div class="right">
   <img src="assets/homepage-cat.png">
 </div>
+-->
+
+<header>
+  <img src="assets/Titre.png" alt="Logo Netflix" class="logo">
+</header>
+
+<video autoplay="autoplay" muted="muted" loop="infinite" src="assets/VD_NETFLIX.mp4" id="bgvid" class='fillWidth'></video>
+
+<div id="Aide">
+  <h2>Cliquer sur Le bouton pour accéder à la page d'accueil </h2>
+  <h3>Sur la barre de navigation à votre disposition deux boutons : </h3>
+  <ul>
+    <li>Partie USER</li>
+    <li>Partie ADMIN</li>
+  </ul>
+  <h3>Comment ça marche ?</h3>
+  <p>AIDE</p>
+
+</div>
+
+<div *ngFor="let student of students">
+  <p>{{student.firstName}}</p>
+  <p>{{student.lastName}}</p>
+</div>
+
+
+
+

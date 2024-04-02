@@ -1,0 +1,59 @@
+<p>admin works icii!</p>
+
+
+<div class="d-flex align-items-center">
+
+  <!--
+  <a mat-raised-button color="primary" routerLink="../question-details/">New</a>
+
+</div>
+<div *ngFor="let cat of category">
+
+<div *ngFor="let question of question">
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col"> {{cat.name}}</th>
+
+    </tr>
+    <td> {{question.name_img}}</td>
+
+
+ <td> {{question.response?.resp1}}</td>
+    <td> {{question.response!!.resp2}}}</td>
+    <td> {{question.response!!.resp3}}}</td>
+    <td> {{question.response!!.good_resp}}}</td>
+      <td> <a mat-raised-button color="primary" routerLink="../question-details/">New</a></td>
+      <td>
+        <button mat-icon-button color="warn" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+
+    </thead>
+
+  </table>
+</div>
+</div>
+-->
+<div *ngFor="let cate of category">
+
+<p scope="col"> {{cate.name}}</p>
+  <div *ngFor="let question of question">
+    <div *ngIf="question.id_cat===cate.id_category">
+      <p>QUESTION {{question.name_img}}</p>
+      <p> GOOD{{question.rep.good_resp}}</p>
+    </div>
+
+
+
+<!-- <div *ngFor="let question of question">
+  <div *ngFor="let question of getQuestionsByCategoryId(cate.id); let i = index">-->
+
+
+
+
+</div>
+</div>
+</div>

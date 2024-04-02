@@ -22,7 +22,7 @@ INSERT INTO courses (id, name, hours) VALUES (7, 'Java', 30);
 INSERT INTO courses (id, name, hours) VALUES (8, 'Lean Management', 30);
 INSERT INTO student_course (id, student_id, course_id) VALUES (1, 1, 7);*/
 
-/*INSERT INTO player (id_player, pseudo, score, classement) VALUES (1, 'leti', 0,0);
+INSERT INTO player (id_player, pseudo, score, classement) VALUES (1, 'leti', 0,0);
 INSERT INTO player (id_player, pseudo, score, classement) VALUES (2, 'ghita', 0,0);
 INSERT INTO player (id_player, pseudo, score, classement) VALUES (3, 'raf', 0,0);
 
@@ -30,9 +30,9 @@ INSERT INTO admin (id_admin, name) VALUES (1, 'mouss');
 
 INSERT INTO category (id_category, cat_name) VALUES (1, 'series');
 INSERT INTO category (id_category, cat_name) VALUES (2, 'movies');
-INSERT INTO category (id_category, cat_name) VALUES (3, 'animes');*/
+INSERT INTO category (id_category, cat_name) VALUES (3, 'animes');
 
-/*
+
 
 INSERT INTO response (id_response, resp1, resp2, resp3,good_resp) VALUES
                                                                     (1,'Tony Soprano','Dexter Morgan','Rick Grimes','Walter White'),
@@ -78,9 +78,6 @@ INSERT INTO response (id_response, resp1, resp2, resp3, good_resp) VALUES
                                                                         (38, 'Tony Stark', 'Bruce Wayne', 'Steve Rogers','Clark Kent'),
                                                                         (39, 'Luke Skywalker', 'Harry Potter', 'Frodo Sacquet','Ethan Hunt'),
                                                                         (40, 'Peter Parker', 'Steve Rogers', 'Bruce Wayne','Tony Stark');
-
-
-
 INSERT INTO response (id_response, resp1, resp2, resp3, good_resp) VALUES
                                                                        (41, 'Naruto Uzumaki', 'Monkey D. Luffy', 'Ichigo Kurosaki', 'Goku'),
                                                                        (42, 'Light Yagami', 'Edward Elric', 'Lelouch Lamperouge', 'Eren Yeager'),
@@ -102,8 +99,6 @@ INSERT INTO response (id_response, resp1, resp2, resp3, good_resp) VALUES
                                                                        (58, 'Rukia Kuchiki', 'Orihime Inoue', 'Hinata Hyuga', 'Bulma'),
                                                                        (59, 'Yoh Asakura', 'Yusei Fudo', 'Yusuke Urameshi', 'Yugi Muto'),
                                                                        (60, 'Kenshiro', 'Ryo Saeba', 'Goku', 'Inuyasha');
-*/
-
 
 INSERT INTO question (id_question, id_cat, id_res, name_img) VALUES
                                                                  (1,1,1,'breaking_bad_img'),
@@ -126,7 +121,6 @@ INSERT INTO question (id_question, id_cat, id_res, name_img) VALUES
                                                                  (18,1,18,'Supergirl_img'),
                                                                  (19,1,19,'Dynastie_img'),
                                                                  (20,1,20,'Wednesday_img');
-
 INSERT INTO question (id_question, id_cat, id_res, name_img) VALUES
                                                                  (21,2,21,'Harry_potter_img'),
                                                                  (22,2,22,'James_bond_img'),
@@ -148,7 +142,6 @@ INSERT INTO question (id_question, id_cat, id_res, name_img) VALUES
                                                                  (38,2,38,'Clark_Kent_img'),
                                                                  (39,2,39,'Ethan_Hunt_img'),
                                                                  (40,2,40,'Tony_Stark_img');
-
 INSERT INTO question (id_question, id_cat, id_res, name_img) VALUES
                                                                  (41,3,41,'Goku_img'),
                                                                  (42,3,42,'Eren_Yeager_img'),
