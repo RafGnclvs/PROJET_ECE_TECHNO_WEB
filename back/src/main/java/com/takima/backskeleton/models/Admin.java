@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 public class Admin {
     @Id //Pour faire correspondre les clés
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Génère les id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "admin_id_seq") //Génère les id
     private int id;
     @Column(name = "name")
     private String name;
