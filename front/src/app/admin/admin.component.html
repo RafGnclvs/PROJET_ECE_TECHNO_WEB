@@ -6,12 +6,14 @@
   <a mat-raised-button color="primary" routerLink="../question-details">Agir sur les Questions</a>
   <a mat-raised-button color="primary" routerLink="../player">Agir sur les Quiz</a>
 </div>
+
 <div *ngFor="let cate of category">
 
 <p scope="col"> {{cate.name}}</p>
   <div *ngFor="let question of question">
     <div *ngIf="question.id_cat===cate.id_category">
       <p>QUESTION {{question.name_img}}</p>
+
 
 
 
