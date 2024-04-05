@@ -1,1 +1,5 @@
   <p>player works!</p>
+  <div *ngFor="let player of player">
+    <p>NOM {{player.pseudo}}</p>
+  </div>
+  <button (click)="Add()">Add</button>

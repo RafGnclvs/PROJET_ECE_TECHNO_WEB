@@ -13,7 +13,8 @@ import java.util.List;
 public class Player {
     @Id //Pour faire correspondre les clés
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_id_player_seq")
-    private long id;
+    private long id_player;
+
     @Column(name = "pseudo")
     private String pseudo;
     @Column(name = "score")
@@ -26,7 +27,7 @@ public class Player {
     }
 
     private Player(Builder builder) {
-        this.id = builder.id;
+        this.id_player = builder.id;
         this.pseudo = builder.pseudo;
         this.score = builder.score;
         this.classement = builder.classement;

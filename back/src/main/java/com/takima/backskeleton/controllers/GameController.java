@@ -1,9 +1,9 @@
 package com.takima.backskeleton.controllers;
 
-import com.takima.backskeleton.models.Question;
-import com.takima.backskeleton.models.Response;
-import com.takima.backskeleton.services.QuestionService;
-import com.takima.backskeleton.services.ResponseService;
+import com.takima.backskeleton.models.Category;
+import com.takima.backskeleton.models.Game;
+import com.takima.backskeleton.services.CategoryService;
+import com.takima.backskeleton.services.GameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping("question")
+@RequestMapping("game")
 @RestController
 @RequiredArgsConstructor
-public class QuestionController {
-    private final QuestionService questionService;
+public class GameController {
+    private final GameService gameService;
 
     @GetMapping("")
-    public List<Question> getAllQuestion() {
-        return questionService.findAll();
+    public List<Game> getAllgames() {
+        return gameService.findAll();
     }
 }

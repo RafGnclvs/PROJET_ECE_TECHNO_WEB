@@ -20,16 +20,16 @@ public class Question {
     @Column(name = "id_cat")
     private Long id_cat;
 
-   // @Column(name = "id_res")
-    //private Long id_res;
+   @Column(name = "id_res")
+    private Long id_res;
     //@ManyToOne(cascade = CascadeType.MERGE)
 
-
+/*
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_res")
     private Response REP;
 
-
+*/
 
 
 
@@ -47,20 +47,20 @@ public class Question {
         this.id_cat = id_category;
     }
 
-  //  public void setIdResponse(Long id_response) {this.id_res = id_response;}
+   public void setIdResponse(Long id_response) {this.id_res = id_response;}
 
     private Question(Builder builder) {
         this.id_question = builder.id_question;
         this.name_img = builder.name_img;
         this.id_cat= builder.id_category;
-       // this.id_res= builder.id_response;
-        this.REP=builder.REP;
+        this.id_res= builder.id_response;
+       // this.REP=builder.REP;
 
     }
     public Question() {
     }
 
-   // public Long getIdResponse() {return id_res ;}
+    public Long getIdResponse() {return id_res ;}
 
 
 

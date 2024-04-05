@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core"
-import { StudentService } from "../services/student.service"
-import { Student } from "../models/student.model"
+import {GameService} from "../services/game.service"
+import {Game} from "../models/game.model"
 
 @Component({
   selector: "epf-home",
@@ -9,13 +9,13 @@ import { Student } from "../models/student.model"
 })
 export class HomeComponent implements OnInit {
 
-  students : Student[] = [];
-  constructor(private studentService : StudentService) {
+  games : Game[] = [];
+  constructor(private gameService : GameService) {
 
   }
 
   ngOnInit(): void {
-  this.studentService.findAll().subscribe(tableau => this.students=tableau);
+  this.gameService.findAll().subscribe(tableau => this.games=tableau);
   }
 
 }

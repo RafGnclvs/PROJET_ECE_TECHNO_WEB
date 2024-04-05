@@ -3,6 +3,7 @@ export interface Response {
   resp2: string
   resp3: string
   good_resp : string
+  id_response : number;
 
 
 }
