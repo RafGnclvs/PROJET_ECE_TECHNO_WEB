@@ -18,8 +18,9 @@ import java.util.List;
 public class PlayerController {
     private final PlayerService playerService;
 
+
     @GetMapping("")
-    public List<Player> getAllPlayer() {
+    public List<Player> getAllPlayers() {
         return playerService.findAll();
     }
     @GetMapping("/{id}")
@@ -28,17 +29,17 @@ public class PlayerController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable Long id) {
+    public void deletePlayer(@PathVariable Long id) {
         playerService.deleteById(id);
     }
 
     @PostMapping("")
-    public Player addStudent(@RequestBody Player player) {
-        return playerService.addPlayer(player);
+    public void addPlayer(@RequestBody Player player) {
+        playerService.addPlayer(player);
     }
 
     @PostMapping("/{id}")
-    public void updateStudent(@RequestBody Player player, @PathVariable Long id) {
+    public void updatePlayer(@RequestBody Player player, @PathVariable Long id) {
         playerService.updatePlayer(player, id);
     }
 }

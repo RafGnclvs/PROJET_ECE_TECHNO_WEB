@@ -18,6 +18,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PlayerComponent } from './player/player.component';
 import { AdminComponent } from './admin/admin.component';
 import { QuestionDetailsComponent } from './question-details/question-details.component';
+import { GameComponent } from './game/game.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { QuestionDetailsComponent } from './question-details/question-details.co
     MajorStudentsComponent,
     PlayerComponent,
     AdminComponent,
-    QuestionDetailsComponent
+    QuestionDetailsComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

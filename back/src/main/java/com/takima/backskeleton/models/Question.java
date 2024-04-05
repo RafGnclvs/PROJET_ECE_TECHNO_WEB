@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 public class Question {
     @Id //Pour faire correspondre les clés
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Génére les id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_id_question_seq") //Génére les id
     private Long id_question;
     @Column(name = "name_img")
     private String name_img;
