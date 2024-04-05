@@ -20,7 +20,7 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping("")
-    public List<Question> getAllResponse() {
+    public List<Question> getAllQuestion() {
         return questionService.findAll();
     }
 }

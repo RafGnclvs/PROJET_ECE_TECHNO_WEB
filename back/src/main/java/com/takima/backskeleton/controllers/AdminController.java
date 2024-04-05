@@ -21,7 +21,7 @@ public class AdminController {
     public List<Admin> getAllAdmin() {
         return adminService.findAll();
     }
-    /*
+
 
     @PostMapping("")
     public void updateQuestion(@PathVariable Long id, @PathVariable String r1,@PathVariable String r2,@PathVariable String r3) {
@@ -34,7 +34,7 @@ public class AdminController {
                             @PathVariable String chemin) {
        adminService.ajouterQuestion(r1, r2, r3, id, chemin);
     }
-*/
+
     @DeleteMapping("/{id}")
     public void supprimerQuestion(@PathVariable Long id) {
         adminService.supprimerQuestion(id);

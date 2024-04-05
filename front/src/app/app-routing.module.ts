@@ -48,8 +48,8 @@ const routes: Routes = [
   },
   {path : "player", component: PlayerComponent},
   {path : "admin", component: AdminComponent},
-  {path : "question-details", component: QuestionDetailsComponent},
   {path : "game", component: GameComponent},
+  {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
 ]
 
 @NgModule({
