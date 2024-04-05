@@ -24,7 +24,6 @@ export class QuestionDetailsComponent implements OnInit {
      this.id_rep=Number(routeParams.get('id_rep'));
 
     // Find the product that correspond with the id provided in route.
-
   }
 
 }
