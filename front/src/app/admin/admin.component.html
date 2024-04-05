@@ -6,6 +6,7 @@
   <a mat-raised-button color="primary" routerLink="../question-details">Agir sur les Questions</a>
   <a mat-raised-button color="primary" routerLink="../player">Agir sur les Quiz</a>
 </div>
+
 <div *ngFor="let cate of category">
 
 <p scope="col"> {{cate.name}}</p>
@@ -19,7 +20,6 @@
       <button mat-icon-button color="warn" >
         <mat-icon>delete</mat-icon>
       </button>
-
 
     </div>
 </div>
