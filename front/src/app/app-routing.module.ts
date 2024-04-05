@@ -50,7 +50,7 @@ const routes: Routes = [
 
   {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
 
-  
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
