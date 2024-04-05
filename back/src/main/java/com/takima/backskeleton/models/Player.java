@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 public class Player {
     @Id //Pour faire correspondre les clés
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_id_player_seq")
     private long id;
     @Column(name = "pseudo")
     private String pseudo;

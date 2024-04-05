@@ -75,3 +75,5 @@ create table Game
     id_p4 SERIAL REFERENCES player(id_player),
     id_cat SERIAL REFERENCES category(id_category)
 );
+
+alter sequence students_id_seq restart 10000 increment by 50;
