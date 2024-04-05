@@ -1,4 +1,4 @@
-export interface Category {
+export interface Game {
   id_game: number
   id_p1: number
   id_p2: number

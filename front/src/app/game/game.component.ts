@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from "../services/game.service"
+import {Game} from "../models/game.model"
 
 @Component({
   selector: 'epf-game',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-
-  constructor() { }
+  game:Game[]=[];
+  constructor(private gameService:GameService) { }
 
   ngOnInit(): void {
+    this.gameService.findAll().subscribe(tableau =>this.game=tableau);
+
   }
 
 }
