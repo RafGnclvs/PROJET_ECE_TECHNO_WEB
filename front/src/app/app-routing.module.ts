@@ -48,10 +48,7 @@ const routes: Routes = [
   },
   {path : "player", component: PlayerComponent},
   {path : "admin", component: AdminComponent},
-<<<<<<< Updated upstream
-=======
   {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
->>>>>>> Stashed changes
   {path : "question-details", component: QuestionDetailsComponent},
   {path : "game", component: GameComponent},
 ]
