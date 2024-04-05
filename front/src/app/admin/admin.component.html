@@ -2,11 +2,11 @@
 
 
 <div class="d-flex align-items-center">
-
-  <!--
-  <a mat-raised-button color="primary" routerLink="../question-details/">New</a>
-
+  <a mat-raised-button color="primary" routerLink="../player">Agir sur les users</a>
+  <a mat-raised-button color="primary" routerLink="../question-details">Agir sur les Questions</a>
+  <a mat-raised-button color="primary" routerLink="../player">Agir sur les Quiz</a>
 </div>
+<<<<<<< Updated upstream
 <div *ngFor="let cat of category">
 
 <div *ngFor="let question of question">
@@ -37,23 +37,25 @@
 </div>
 </div>
 -->
+=======
+
+>>>>>>> Stashed changes
 <div *ngFor="let cate of category">
 
 <p scope="col"> {{cate.name}}</p>
   <div *ngFor="let question of question">
     <div *ngIf="question.id_cat===cate.id_category">
       <p>QUESTION {{question.name_img}}</p>
+<<<<<<< Updated upstream
       <p> GOOD{{question.rep.good_resp}}</p>
+=======
+      <a mat-raised-button color="primary" [routerLink]="['../question-details/',question.id_question,question.id_res]">Modify</a>
+      <button mat-icon-button color="warn" >
+        <mat-icon>delete</mat-icon>
+      </button>
+
+>>>>>>> Stashed changes
     </div>
-
-
-
-<!-- <div *ngFor="let question of question">
-  <div *ngFor="let question of getQuestionsByCategoryId(cate.id); let i = index">-->
-
-
-
-
 </div>
 </div>
-</div>
+

@@ -2,6 +2,7 @@ package com.takima.backskeleton.controllers;
 
 
 import com.takima.backskeleton.models.Player;
+import com.takima.backskeleton.models.Question;
 import com.takima.backskeleton.models.Student;
 import com.takima.backskeleton.services.PlayerService;
 import com.takima.backskeleton.services.StudentService;
@@ -17,10 +18,8 @@ import java.util.List;
 public class PlayerController {
     private final PlayerService playerService;
 
-
     @GetMapping("")
     public List<Player> getAllPlayers() {
-
         return playerService.findAll();
     }
     @GetMapping("/{id}")
