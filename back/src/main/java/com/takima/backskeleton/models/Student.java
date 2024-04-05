@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 public class Student {
     @Id //Pour faire correspondre les clés
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Génére les id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "students_id_seq") //Génére les id
     private Long id;
     @Column(name = "first_name")
     private String firstName;

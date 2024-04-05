@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class Response {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "response_id_response_seq")
     private Long id_response;
 
     @Column(name = "resp1")
