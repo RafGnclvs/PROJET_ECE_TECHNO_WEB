@@ -47,8 +47,10 @@ const routes: Routes = [
   },
   {path : "player", component: PlayerComponent},
   {path : "admin", component: AdminComponent},
-  {path : "question-details/:id", component: QuestionDetailsComponent},
-]
+
+  {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
+
+  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

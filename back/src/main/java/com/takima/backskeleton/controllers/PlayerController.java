@@ -2,6 +2,7 @@ package com.takima.backskeleton.controllers;
 
 
 import com.takima.backskeleton.models.Player;
+import com.takima.backskeleton.models.Question;
 import com.takima.backskeleton.models.Student;
 import com.takima.backskeleton.services.PlayerService;
 import com.takima.backskeleton.services.StudentService;
@@ -17,7 +18,10 @@ import java.util.List;
 public class PlayerController {
     private final PlayerService playerService;
 
-
+    @GetMapping("")
+    public List<Player> getAllPlayer() {
+        return playerService.findAll();
+    }
     @GetMapping("/{id}")
     public Player getById(@PathVariable Long id) {
         return playerService.getById(id);
@@ -29,8 +33,8 @@ public class PlayerController {
     }
 
     @PostMapping("")
-    public void addStudent(@RequestBody Player player) {
-        playerService.addPlayer(player);
+    public Player addStudent(@RequestBody Player player) {
+        return playerService.addPlayer(player);
     }
 
     @PostMapping("/{id}")

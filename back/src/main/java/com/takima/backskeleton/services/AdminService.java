@@ -30,7 +30,7 @@ public class AdminService {
 
    // public void modifierQuestion(Long JO, String Rep1, String Rep2, String Rep3){}
 
-    /*
+
    public void modifierQuestion(Long JO, String Rep1, String Rep2, String Rep3) {
 
        // Rechercher la question dans la base de données par son ID
@@ -99,7 +99,7 @@ public class AdminService {
 
 
    }
-*/
+
     @Transactional
     public void supprimerQuestion(Long id) {
         QuestionDao questionDao = null;

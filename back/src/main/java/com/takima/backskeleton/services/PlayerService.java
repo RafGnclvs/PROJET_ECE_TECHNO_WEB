@@ -37,14 +37,9 @@ public class PlayerService {
     }
 
     @Transactional
-    public void addPlayer( Player player) {
-        new Player.Builder()
-                .pseudo(player.getPseudo())
-                .score(player.getScore())
-                .classement(player.getClassement())
-                .build();
+    public Player addPlayer( Player player) {
 
-        playerDao.save(player);
+       return playerDao.save(player);
     }
 
     @Transactional
