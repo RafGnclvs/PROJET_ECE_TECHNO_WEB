@@ -1,11 +1,9 @@
 package com.takima.backskeleton.services;
 
 import com.takima.backskeleton.DAO.CategoryDao;
-import com.takima.backskeleton.DAO.CourseDao;
-import com.takima.backskeleton.DAO.MajorDao;
+import com.takima.backskeleton.DAO.GameDao;
 import com.takima.backskeleton.models.Category;
-import com.takima.backskeleton.models.Course;
-import com.takima.backskeleton.models.Major;
+import com.takima.backskeleton.models.Game;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,15 +12,15 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class CategoryService {
-    private final CategoryDao categoryDao;
+public class GameService {
+    private final GameDao gameDao;
 
    // public List<Category> findAll() {return categoryDao.findAll();}
 
-    public List<Category> findAll() {
-        Iterable<Category> it = categoryDao.findAll();
-        List <Category> cat = new ArrayList<>();
-        it.forEach(cat::add);
-        return cat;
+    public List<Game> findAll() {
+        Iterable<Game> it = gameDao.findAll();
+        List <Game> gm = new ArrayList<>();
+        it.forEach(gm::add);
+        return gm;
     }
 }
