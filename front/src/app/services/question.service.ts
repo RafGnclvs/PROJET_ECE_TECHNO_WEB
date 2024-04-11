@@ -17,5 +17,9 @@ export class QuestionService {
     return this.http.get<Question[]>(this.questionUrl)
   }
 
+  getByIdCategory(cat:number): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.questionUrl}/${cat}`)
+  }
+
 
 }
