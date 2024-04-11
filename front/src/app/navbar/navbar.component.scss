@@ -2,7 +2,10 @@
 
 nav {
   height: 80px;
-  background: linear-gradient(to right, theme.$common-purple, theme.$common-red);
+ /* background: linear-gradient(to right, theme.$common-purple, theme.$common-red);*/
+  background: rgb(255,0,0);
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(16,16,16,1) 100%);
+ margin-bottom: 20px;
 
   div {
     height: 100%;
@@ -24,19 +27,36 @@ nav {
     }
   }
 }
-
 .mat-nav-list {
   margin-left: 50px;
   padding: 0;
   display: flex;
+  align-items: center; /* Ajouté pour assurer l'alignement vertical */
+}
+
+.mat-nav-list a {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+
+  padding: 0 15px;
+  margin-right: 10px;
+
+  color: #000;
+  text-decoration: none;
+  transition: .3s;
+  font-family: 'Skarpa Bold', sans-serif;
+
+
+  &:hover {
+    transform: scale(1.35);
+    color: theme.$white;
+  }
 }
 
 .mat-list-base .mat-list-item {
-  font-size: large;
-  color: theme.$white;
+  font-size: 30px;
   transition: .3s;
-
-  &:hover {
-    transform: scale(1.2);
-  }
 }

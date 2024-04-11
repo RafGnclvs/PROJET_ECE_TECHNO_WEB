@@ -67,7 +67,6 @@ export class PlayerComponent implements OnInit {
     }
   }
 
-
   updatePlayer(player: Player): void {
       this.playerService.updatePlayer(this.selectedPlayer, this.selectedPlayer.id_player as bigint).subscribe({
         next: (updatedPlayer) => {
@@ -76,15 +75,9 @@ export class PlayerComponent implements OnInit {
           this.players = this.players.map(_player =>
              _player.id_player === updatedPlayer.id_player ? updatedPlayer : _player
           );
-
-
-
         },
-
       });
-
   }
-
 
 
 

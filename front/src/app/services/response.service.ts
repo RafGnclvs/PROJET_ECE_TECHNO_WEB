@@ -18,11 +18,11 @@ export class ResponseService {
     return this.http.get<Response[]>(this.responseUrl)
   }
 
-  getById(id: number): Observable<Response> {
+  getById(id: bigint): Observable<Response> {
     return this.http.get<Response>(`${this.responseUrl}/${id}`)
   }
 
-  updateResponse(id: number, response: Response): Observable <Response> {
+  updateResponse(id: bigint, response: Response): Observable <Response> {
     return this.http.post<Response>(`${this.responseUrl}/${id}`, response)
   }
 
@@ -30,7 +30,7 @@ export class ResponseService {
     return this.http.post<Response>(this.responseUrl, response)
   }
 
-  deleteResponse(id: number): Observable<any>{
+  deleteResponse(id: bigint): Observable<any>{
     return this.http.delete(`${this.responseUrl}/${id}`)
   }
 
