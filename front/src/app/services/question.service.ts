@@ -25,7 +25,7 @@ export class QuestionService {
     return this.http.get<Question>(`${this.questionUrl}/${id}`)
   }
 
-  updateQuestion(id: number, question: Question): Observable <Question> {
+  updateQuestion(id: bigint, question: Question): Observable <Question> {
     return this.http.post<Question>(`${this.questionUrl}/${id}`, question)
   }
 

@@ -1,8 +1,73 @@
 
 .game-image {
-  max-width: 200px;
+  max-width: 300px;
   height: auto;
   display: block;
   margin-bottom: 10px;
 }
 
+.netflix-style-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #141414;
+  color: #fff;
+ /* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: 'Skarpa Bold', sans-serif;
+
+}
+
+
+.netflix-style-container button,
+.netflix-style-container p {
+  color: #e50914;
+  margin: 5px 0;
+  font-size: 25px;
+}
+
+.netflix-style-container button {
+  background-color: #e50914;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  min-width: 100%;
+  text-align: center;
+
+}
+
+.netflix-style-container button:hover {
+  background-color: #f6121d;
+}
+
+.netflix-style-container img.game-image {
+
+  height: auto;
+  border-radius: 5px;
+  border: 2px solid #fff; /* Bordure blanche pour l'image */
+  margin-top: -20px; /* Décalage de l'image vers le haut */
+}
+
+.netflix-style-container input[type="text"] {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #333;
+  background-color: #000;
+  color: #fff;
+}
+
+.netflix-style-container button {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+
+
+.netflix-style-container p {
+  font-size: 1.5em; /* Augmente la taille du texte */
+  font-weight: bold; /* Texte en gras */
+}

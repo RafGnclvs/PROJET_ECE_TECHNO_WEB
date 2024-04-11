@@ -19,13 +19,63 @@ export class QuestionDetailsComponent implements OnInit {
   questions : Question[] = [];
   responses : Response[] = [];
   editMode = false;
+  SelectedResponse : Response =
+    {
+      resp1: "",
+      resp2: "",
+      resp3: "",
+      good_resp : ""
+    }
+  ;
 
-// Méthode pour soumettre les modifications
-  UpdateQuestion() {
-    console.log("Soumission du formulaire", this.responses);
-    // Ici, tu peux appeler un service pour mettre à jour la réponse dans la base de données ou backend
-    this.editMode = false; // Sortie du mode édition
+  Changement(Rep : Response)
+  {
+    this.editMode = true ;
+    this.SelectedResponse={ ...Rep};
+
   }
+// Méthode pour soumettre les modifications
+  UpdateQuestion(rep: Response) {
+
+    console.log("ON EST DANS UPDATE QUESTION", rep);
+    console.log("SELECTED RESPONSE", this.SelectedResponse.id_response as bigint);
+    this.editMode = false;
+
+
+    this.responseService.updateResponse( this.SelectedResponse.id_response as bigint,this.SelectedResponse).subscribe({
+      next: (updatedQuestion) => {
+
+        console.log('Mise à jour réussie', updatedQuestion);
+
+        this.responses = this.responses.map(_rep =>
+
+          {
+            if (          _rep.id_response === updatedQuestion.id_response             ) {
+              return updatedQuestion;
+            }
+            return _rep;
+          }
+        );
+        console.log("SELECTED RESPONSE", updatedQuestion.resp1 );
+      },
+    });
+
+  }
+
+  /*
+   updatePlayer(player: Player): void {
+      this.playerService.updatePlayer(this.selectedPlayer, this.selectedPlayer.id_player as bigint).subscribe({
+        next: (updatedPlayer) => {
+
+          console.log('Mise à jour réussie', updatedPlayer);
+          this.players = this.players.map(_player =>
+             _player.id_player === updatedPlayer.id_player ? updatedPlayer : _player
+          );
+        },
+      });
+  }
+
+   */
 
   constructor(private route: ActivatedRoute, private questionService : QuestionService,private responseService : ResponseService) { }
 
