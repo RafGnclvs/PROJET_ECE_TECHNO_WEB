@@ -14,8 +14,8 @@ import { ActivatedRoute } from "@angular/router"
 })
 export class GameComponent implements OnInit {
   game:Game[]=[];
-  question: Question[]=[];
-  response: Response[]=[];
+  questions: Question[]=[];
+  responses: Response[]=[];
   path: string=`assets/Question_img/`;
   id_cat?: number;
   numberPlayer?:number;
@@ -28,8 +28,8 @@ export class GameComponent implements OnInit {
     console.log('Id de la catégorie sélectionné :', this.id_cat);
     console.log('Nombre de joueurs sélectionné :', this.numberPlayer);
     this.gameService.findAll().subscribe(tableau =>this.game=tableau);
-    this.questionService.getByIdCategory(this.id_cat).subscribe(tableau => this.question=tableau);
-    this.responseService.findAll().subscribe(tableau => this.response=tableau);
+    this.questionService.getByIdCategory(this.id_cat).subscribe(tableau => this.questions=tableau);
+    this.responseService.findAll().subscribe(tableau => this.responses=tableau);
 
   }
 
