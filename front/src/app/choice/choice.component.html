@@ -1,0 +1,43 @@
+<body>
+
+<div *ngIf="showPage===1">
+  <h1 class="deco">Selectionnez la catégorie</h1>
+  <ul>
+    <li *ngFor="let categorie of categories">
+      <button class="button" (click)="selectIdCategory(categorie.id_category)" >{{categorie.name}}</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="showPage===2">
+  <h1 class="deco">Selectionnez le nombre de participants</h1>
+  <ul>
+    <li><button class="button" (click)="selectNumberOfPlayers(2)">2 Joueurs</button></li>
+    <li><button class="button" (click)="selectNumberOfPlayers(3)">3 Joueurs</button></li>
+    <li><button class="button" (click)="selectNumberOfPlayers(4)">4 Joueurs</button></li>
+  </ul>
+</div>
+
+<div *ngIf="showPage===3">
+  <h1 class="deco"> Joueur {{ currentPlayerIndex + 1 }} saisissez votre pseudo</h1>
+  <!--<ul *ngFor="let _ of Array(numberOfPlayers || 0); let i = index">
+    <li >
+      <input type="text" [(ngModel)]="playerNames[i]" placeholder="Joueur {{ i + 1 }}">
+    </li>
+    <li><button class="button">Confirmer</button></li>
+  </ul>-->
+  <ul *ngIf="currentPlayerIndex+1 < numberOfPlayers; else elseBlock">
+    <li><input type="text" [(ngModel)]="currentPlayerName" placeholder="Joueur {{ currentPlayerIndex + 1 }}"></li>
+    <li><button class="button" (click)="nextPlayer()">Confirmer</button></li>
+  </ul>
+  <ng-template #elseBlock>
+    <ul *ngIf="currentPlayerIndex+1===numberOfPlayers">
+      <li><input type="text" [(ngModel)]="currentPlayerName" placeholder="Joueur {{ currentPlayerIndex + 1 }}"></li>
+      <li><button class="button" (click)="nextPlayer()" [routerLink]="['../game/',idCatSelected,numberOfPlayers]">Confirmer</button></li>
+    </ul>
+  </ng-template>
+</div>
+
+
+
+</body>

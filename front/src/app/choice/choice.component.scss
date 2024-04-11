@@ -1,0 +1,51 @@
+body {
+  background-color: #000;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none; /* Supprime les puces des listes non ordonnées */
+  text-align: center;
+  padding-top: 50px;
+}
+
+input {
+  text-align: center;
+  padding: 10px 10px;
+  font-size: 25px;
+  text-anchor: middle;
+}
+
+.button {
+  text-align: center;
+  font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix */
+  background-color: #e50914; /* Rouge Netflix */
+  color: #fff;
+  padding: 10px 100px;
+  border: none;
+  border-radius: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  transition: transform 0.3s ease;
+
+}
+
+.deco{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  padding-top: 70px;
+}
+#Aide{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}

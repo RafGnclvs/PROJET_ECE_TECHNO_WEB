@@ -13,6 +13,7 @@ import { PlayerComponent } from './player/player.component'
 import { AdminComponent } from "./admin/admin.component"
 import { QuestionDetailsComponent } from "./question-details/question-details.component"
 import { GameComponent } from "./game/game.component"
+import { ChoiceComponent } from "./choice/choice.component"
 
 
 
@@ -49,7 +50,9 @@ const routes: Routes = [
   {path : "player", component: PlayerComponent},
   {path : "admin", component: AdminComponent},
   {path : "game", component: GameComponent},
+  {path : "choice", component: ChoiceComponent},
   {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
+  {path : "game/:id_cat/:numberPlayer",component: GameComponent},
 
 ]
 

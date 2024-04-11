@@ -78,7 +78,7 @@ create table Game
 
 
 alter sequence students_id_seq restart 10000 increment by 50;
-alter sequence admin_id_seq restart 10000 increment by 50;
+alter sequence admin_id_admin_seq restart 10000 increment by 50;
 alter sequence category_id_category_seq restart 10000 increment by 50;
 alter sequence player_id_player_seq restart 10000 increment by 50;
 alter sequence question_id_question_seq restart 10000 increment by 50;

@@ -7,4 +7,5 @@ import { Component } from "@angular/core"
 })
 export class AppComponent {
   title = "epf-front-skeleton"
+  protected readonly path = module
 }

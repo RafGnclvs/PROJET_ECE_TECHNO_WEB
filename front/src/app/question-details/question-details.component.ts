@@ -11,7 +11,6 @@ import { Response } from "../models/response.model"
 export class QuestionDetailsComponent implements OnInit {
 
   id?: number;
-  //rep: Response ;
   id_rep? :number ;
 
   constructor(private route: ActivatedRoute) { }
@@ -25,8 +24,6 @@ export class QuestionDetailsComponent implements OnInit {
      this.id_rep=Number(routeParams.get('id_rep'));
 
     // Find the product that correspond with the id provided in route.
-
-
   }
 
 }

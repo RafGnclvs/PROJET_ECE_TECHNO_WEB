@@ -17,8 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PlayerController {
     private final PlayerService playerService;
-
-
     @GetMapping("")
     public List<Player> getAllPlayers() {
         return playerService.findAll();

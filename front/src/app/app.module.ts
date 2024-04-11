@@ -19,6 +19,7 @@ import { PlayerComponent } from './player/player.component';
 import { AdminComponent } from './admin/admin.component';
 import { QuestionDetailsComponent } from './question-details/question-details.component';
 import { GameComponent } from './game/game.component';
+import { ChoiceComponent } from './choice/choice.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { GameComponent } from './game/game.component';
     PlayerComponent,
     AdminComponent,
     QuestionDetailsComponent,
-    GameComponent
+    GameComponent,
+    ChoiceComponent
   ],
   imports: [
     BrowserModule,

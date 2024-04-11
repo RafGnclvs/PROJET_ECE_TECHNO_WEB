@@ -15,6 +15,11 @@ h2
   padding-bottom: 150px;
   text-align: center;
 }
+
+ul {
+  list-style-type: none; /* Supprime les puces des listes non ordonnées */
+}
+
 .logo {
   display: block;
   margin: 0 auto;
