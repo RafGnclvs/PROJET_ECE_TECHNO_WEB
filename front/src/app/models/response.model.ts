@@ -5,5 +5,4 @@ export interface Response {
   good_resp : string
   id_response : number;
 
-
 }
