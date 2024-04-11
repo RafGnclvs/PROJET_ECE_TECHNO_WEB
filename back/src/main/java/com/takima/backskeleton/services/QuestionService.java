@@ -33,6 +33,13 @@ public class QuestionService {
         return questionDao.findById(id).orElseThrow();
     }
 
+    public List<Question> getByIdCategory(long id_cat ){
+        Iterable<Question> it = questionDao.findById_cat(id_cat);
+        List <Question> Quest = new ArrayList<>();
+        it.forEach(Quest::add);
+        return Quest;
+    }
+
     @Transactional
     public void deleteById(Long id) {
         questionDao.deleteById(id);
