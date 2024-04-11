@@ -26,4 +26,18 @@ public class QuestionController {
     public List<Question> findById_cat(@PathVariable Long id_cat) {
         return questionService.getByIdCategory(id_cat);
     }
+
+    @GetMapping("//{id}")
+    public Question getById(@PathVariable Long id){return questionService.getById(id);}
+
+    @DeleteMapping("/{id}")
+    public void deleteQuestion(@PathVariable Long id){questionService.deleteById(id);}
+
+    @PostMapping("")
+    public Question addQuestion(@RequestBody Question question){return questionService.addQuestion(question);}
+
+    @PostMapping("/{id}")
+    public Question updateQuestion(@RequestBody Question question, @PathVariable Long id) {
+        return questionService.updateQuestion(question,id);
+    }
 }
