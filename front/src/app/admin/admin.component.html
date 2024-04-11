@@ -1,25 +1,36 @@
+
 <p>admin works icii!</p>
 
-
-<div class="d-flex align-items-center">
-  <a mat-raised-button color="primary" routerLink="../player">Agir sur les users</a>
-  <a mat-raised-button color="primary" routerLink="../question-details">Agir sur les Questions</a>
-  <a mat-raised-button color="primary" routerLink="../player">Agir sur les Quiz</a>
+<div *ngIf="showPage===0">
+  <ul>
+    <li><button class="button" routerLink="../player">Modifier les users</button></li>
+    <!--
+    <li><button class="button" routerLink="../question-details">Agir sur les Questions du Quiz</button> </li>
+    -->
+    <li> <button class="button" (click)="ModifierPage()">Modifier les questions</button></li>
+  </ul>
 </div>
 
-<div *ngFor="let cate of category">
 
-<p scope="col"> {{cate.name}}</p>
-  <div *ngFor="let question of question">
-    <div *ngIf="question.id_cat===cate.id_category">
-      <p>QUESTION {{question.name_img}}</p>
+<div *ngIf="showPage===1">
+  <h1 class="deco">Choix de la catégorie</h1>
+  <ul>
+    <li *ngFor="let categorie of category">
+      <button class="button" (click)="selectIdCategory(categorie.id_category)">{{categorie.name}}</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="showPage===2">
+    <div *ngFor="let question of question">
+     <div *ngIf="question.id_cat===currentCategory">
+      <p>  <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image"></p>
 
       <a mat-raised-button color="primary" [routerLink]="['../question-details/',question.id_question,question.id_res]">Modify</a>
       <button mat-icon-button color="warn" >
         <mat-icon>delete</mat-icon>
       </button>
-
     </div>
-</div>
+  </div>
 </div>
 
