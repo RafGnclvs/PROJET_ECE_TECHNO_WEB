@@ -34,12 +34,12 @@ public class PlayerController {
     }
 
     @PostMapping("")
-    public void addPlayer(@RequestBody Player player) {
-        playerService.addPlayer(player);
+    public Player addPlayer(@RequestBody Player player) {
+        return playerService.addPlayer(player);
     }
 
     @PostMapping("/{id}")
-    public void updatePlayer(@RequestBody Player player, @PathVariable Long id) {
-        playerService.updatePlayer(player, id);
+    public Player updatePlayer(@RequestBody Player player, @PathVariable Long id) {
+        return playerService.updatePlayer(player, id);
     }
 }
