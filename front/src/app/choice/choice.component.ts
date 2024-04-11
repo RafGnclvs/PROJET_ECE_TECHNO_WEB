@@ -12,7 +12,7 @@ import {PlayerService} from "../services/player.service"
 export class ChoiceComponent implements OnInit {
   showPage: number=1;
   numberOfPlayers: number=0;
-  category:Category[]=[];
+  categories:Category[]=[];
   playerNames:string[]=[];
   currentPlayerName: string="";
   currentPlayerIndex: number = 0;
@@ -20,7 +20,7 @@ export class ChoiceComponent implements OnInit {
   constructor(private categoryService : CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.findAll().subscribe(tableau => this.category=tableau);
+    this.categoryService.findAll().subscribe(tableau => this.categories=tableau);
   }
 
   togglePage(page: number): void {

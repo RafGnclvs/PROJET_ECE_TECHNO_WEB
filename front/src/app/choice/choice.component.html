@@ -3,7 +3,7 @@
 <div *ngIf="showPage===1">
   <h1 class="deco">Selectionnez la catégorie</h1>
   <ul>
-    <li *ngFor="let categorie of category">
+    <li *ngFor="let categorie of categories">
       <button class="button" (click)="selectIdCategory(categorie.id_category)" >{{categorie.name}}</button>
     </li>
   </ul>
