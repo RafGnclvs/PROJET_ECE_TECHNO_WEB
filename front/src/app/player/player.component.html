@@ -1,5 +1,69 @@
-  <p>player works!</p>
+<!--
+
+
+<p>player works!</p>
+<div *ngFor="let player of player">
+ <p>Pseudo : {{player.pseudo}} -- Score : {{player.score}} -- Classement : {{player.classement}}</p>
+</div>
+
+
+  <form (ngSubmit)="addPlayer()">
+    <div class="form-group">
+      <label for="pseudo">Pseudo:</label>
+      <input type="text" id="pseudo" class="Zone" [(ngModel)]="newPlayerPseudo" name="pseudo" required>
+    </div>
+    <button type="submit" class="BTN_NET">Ajouter le joueur</button>
+  </form>
+
   <div *ngFor="let player of player">
-    <p>NOM {{player.pseudo}}</p>
+    {{ player.pseudo }} - {{ player.score }}
+    <button class="BTN_NET" (click)="deletePlayer(player.id_player)">Supprimer</button>
+    <form (ngSubmit)="updatePlayer()">
+      <div>
+        <label for="pseudo">Pseudo:</label>
+        <input type="text" id="Npseudo" [(ngModel)]="selectedPlayer.pseudo" name="pseudo">
+      </div>
+      <div>
+        <label for="score">Score:</label>
+        <input type="number" id="score" [(ngModel)]="selectedPlayer.score" name="score">
+      </div>
+    </form>
+      <button class="BTN_NET" (click)="selectPlayer(player)">Modifier</button>
+
   </div>
-  <button (click)="Add()">Add</button>
+-->
+
+<p>player works!</p>
+<div *ngFor="let player of players"> <!-- Assurez-vous que la propriété dans votre composant est nommée 'players' -->
+  <p>Pseudo : {{player.pseudo}} -- Score : {{player.score}} -- Classement : {{player.classement}}
+  <button class="BTN_NET" (click)="selectPlayer(player)">Modifier</button>
+  <button class="BTN_NET" (click)="deletePlayer(player.id_player)">Supprimer</button>
+  </p>
+
+  <!-- Afficher le formulaire de modification uniquement pour le joueur sélectionné -->
+
+  <div *ngIf="selectedPlayer && selectedPlayer.id_player === player.id_player">
+    <form (ngSubmit)="updatePlayer(player)">
+      <div>
+        <label for="pseudo">Pseudo:</label>
+        <input type="text" id="Npseudo" [(ngModel)]="selectedPlayer.pseudo" name="pseudo">
+      </div>
+      <div>
+        <label for="score">Score:</label>
+        <input type="number" id="score" [(ngModel)]="selectedPlayer.score" name="score">
+      </div>
+      <button type="submit" class="BTN_NET">Mettre à jour le joueur</button>
+    </form>
+  </div>
+</div>
+
+<!-- Formulaire pour ajouter un nouveau joueur -->
+
+<form (ngSubmit)="addPlayer()">
+  <div class="form-group">
+    <label for="pseudo">Pseudo:</label>
+    <input type="text" id="pseudo" class="Zone" [(ngModel)]="newPlayerPseudo" name="pseudo" required>
+  </div>
+  <button type="submit" class="BTN_NET">Ajouter le joueur</button>
+</form>
+

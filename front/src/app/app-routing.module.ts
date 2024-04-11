@@ -53,6 +53,7 @@ const routes: Routes = [
   {path : "choice", component: ChoiceComponent},
   {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
   {path : "game/:id_cat/:numberPlayer",component: GameComponent},
+
 ]
 
 @NgModule({

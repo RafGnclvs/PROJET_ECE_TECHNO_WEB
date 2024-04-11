@@ -17,8 +17,15 @@ export class PlayerService {
   findAll(): Observable<Player[]> {
     return this.http.get<Player[]>(this.playerUrl)
   }
-
   Add(player: Player): Observable<Player> {
     return this.http.post<Player>(this.playerUrl, player)
+  }
+
+  deletePlayer(id: bigint): Observable<any> {
+    return this.http.delete(`${this.playerUrl}/${id}`);
+  }
+
+  updatePlayer(player: Player, id: bigint): Observable<Player> {
+    return this.http.post<Player>(`${this.playerUrl}/${id}`, player);
   }
 }

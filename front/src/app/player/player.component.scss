@@ -1,0 +1,26 @@
+.BTN_NET {
+  background-color: #E50914; /* Rouge Netflix */
+  color: white; /* Texte blanc */
+  border: none; /* Pas de bordure */
+  border-radius: 4px; /* Coins arrondis */
+  padding: 10px 20px; /* Espace intérieur pour agrandir le bouton */
+  font-weight: bold; /* Texte en gras */
+  margin-top: 20px; /* Marge en haut pour l'espacement */
+  cursor: pointer; /* Change le curseur en main quand on survole le bouton */
+  font-family: 'Arial', sans-serif; /* Police de caractère (Arial est assez proche de celle utilisée par Netflix) */
+  transition: background-color 0.3s; /* Transition douce pour le survol */
+}
+
+.BTN_NET:hover {
+  background-color: #f40612; /* Rouge un peu plus clair au survol */
+}
+.zone {
+  background-color: white; /* Fond blanc */
+  color: #E50914; /* Écriture rouge */
+  border: 2px solid #E50914; /* Bordure rouge pour rester dans le thème */
+  border-radius: 4px; /* Coins légèrement arrondis */
+  padding: 10px; /* Espacement à l'intérieur de la zone */
+  margin-top: 20px; /* Marge au-dessus pour espacer des autres éléments */
+  font-family: 'Arial', sans-serif; /* Police de caractère, Arial est assez neutre et professionnel */
+  font-size: 16px; /* Taille de la police pour améliorer la lisibilité */
+}

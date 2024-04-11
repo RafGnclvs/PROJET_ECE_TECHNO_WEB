@@ -43,11 +43,11 @@ public class PlayerService {
     }
 
     @Transactional
-    public void updatePlayer(Player player, Long id) {
+    public Player updatePlayer(Player player, Long id) {
         playerDao.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Player doesn't exist"));
 
-        playerDao.save(player);
+        return playerDao.save(player);
     }
 
 }
