@@ -8,7 +8,7 @@
 
 .netflix-style-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -16,6 +16,14 @@
   color: #fff;
  /* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   font-family: 'Skarpa Bold', sans-serif;
+
+}
+.netflix-style-container input {
+
+  border-radius: 5px;
+  display: block;
+  font-size: 25px;
+  width: 250px;
 
 }
 
