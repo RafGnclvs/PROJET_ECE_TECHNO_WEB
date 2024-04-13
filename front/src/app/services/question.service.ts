@@ -33,7 +33,7 @@ export class QuestionService {
     return this.http.post<Question>(this.questionUrl, question)
   }
 
-  deleteQuestion(id: number): Observable<any>{
+  deleteQuestion(id: bigint): Observable<any>{
     return this.http.delete(`${this.questionUrl}/${id}`)
   }
 

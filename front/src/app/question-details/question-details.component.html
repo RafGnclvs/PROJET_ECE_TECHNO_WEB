@@ -34,6 +34,7 @@ class="netflix-style-container"
 
 <link href="https://fonts.cdnfonts.com/css/skarpa" rel="stylesheet">
 <div class="netflix-style-container">
+
 <div *ngFor="let quest of questions">
   <div *ngIf="quest.id_question===id">
     <img [src]="path+quest.name_img+'.png'" alt="Description de l'image" class="game-image">
@@ -46,13 +47,13 @@ class="netflix-style-container"
           <p>Réponse D: {{rep.good_resp}}</p>
           <button (click)="Changement(rep)" >Modifier</button>
         </div>
-        <div *ngIf="editMode">
+        <div class="InputModif" *ngIf="editMode">
           <form (ngSubmit)="UpdateQuestion(rep)">
             <input type="text" [(ngModel)]="SelectedResponse.resp1" name="resp1">
             <input type="text" [(ngModel)]="SelectedResponse.resp2" name="resp2">
             <input type="text" [(ngModel)]="SelectedResponse.resp3" name="resp3">
-            <button type="submit" mat-raised-button color="primary">Save</button>
-            <button (click)="editMode = false" mat-button>Cancel</button>
+            <button type="submit" >Save</button>
+            <button (click)="editMode = false" >Cancel</button>
           </form>
         </div>
         <button >Supprimer</button>

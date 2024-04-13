@@ -13,6 +13,7 @@
 
 
 <div *ngIf="showPage===1">
+  <button  (click)="ArrierePage()">Retour à la page précédente</button>
   <h1 class="deco">Choix de la catégorie</h1>
   <ul>
     <li *ngFor="let categorie of category">
@@ -22,15 +23,60 @@
 </div>
 
 <div *ngIf="showPage===2">
+  <button  (click)="ArrierePage()">Retour à la page précédente</button>
+  <button class="button" (click)="QuestionPage()"> Ajouter une question</button>
     <div *ngFor="let question of question">
      <div *ngIf="question.id_cat===currentCategory">
       <p>  <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image"></p>
 
       <a mat-raised-button color="primary" [routerLink]="['../question-details/',question.id_question,question.id_res]">Modify</a>
-      <button mat-icon-button color="warn" >
-        <mat-icon>delete</mat-icon>
-      </button>
+      <button mat-icon-button color="warn" (click)="SupprimerQuestion(question.id_question)" ><mat-icon>delete</mat-icon></button>
     </div>
   </div>
+</div>
+
+
+
+<div *ngIf="showPage===3">
+  <p>Ghita est au top</p>
+  <button  (click)="ArrierePage()">Retour à la page précédente</button>
+  <div>Pour de nouvelles questions : </div>
+  <div class="form-container">
+    <div *ngFor="let Nom of NomsImages">
+      <p>{{Nom}}</p>
+    </div>
+    <div>Pour d'anciennes questions avec différentes réponses:</div>
+    <div>
+      <ng-container *ngFor="let Q of question; let last = last">
+        <ng-container *ngIf="Q.id_cat === currentCategory">
+          {{ Q.name_img }}<span *ngIf="!last"> ** </span>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <form (ngSubmit)="AjouterQuestion()" id="questionResponseForm">
+
+      <h2>Question</h2>
+      <label for="name_img">Nom de l'image:</label>
+      <input type="text" id="name_img" [(ngModel)]="NewQuest.name_img" name="name_img" required>
+
+
+      <h2>Réponse</h2>
+      <label for="resp1">Réponse 1:</label>
+      <input type="text" id="resp1" [(ngModel)]="NewRep.resp1" name="resp1" required>
+
+      <label for="resp2">Réponse 2:</label>
+      <input type="text" id="resp2" [(ngModel)]="NewRep.resp2"  name="resp2" required>
+
+      <label for="resp3">Réponse 3:</label>
+      <input type="text" id="resp3" [(ngModel)]="NewRep.resp3"  name="resp3" required>
+
+      <label for="good_resp">Bonne réponse:</label>
+      <input type="text" id="good_resp" [(ngModel)]="NewRep.good_resp" name="good_resp" required>
+
+      <button type="submit">Soumettre</button>
+    </form>
+  </div>
+
 </div>
 

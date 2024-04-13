@@ -6,6 +6,7 @@ import { QuestionService } from "../services/question.service"
 import { ResponseService } from "../services/response.service"
 
 
+
 @Component({
   selector: 'epf-question-details',
   templateUrl: './question-details.component.html',
@@ -28,12 +29,15 @@ export class QuestionDetailsComponent implements OnInit {
     }
   ;
 
+
   Changement(Rep : Response)
   {
     this.editMode = true ;
     this.SelectedResponse={ ...Rep};
 
   }
+  constructor(private route: ActivatedRoute, private questionService : QuestionService,private responseService : ResponseService) { }
+
 // Méthode pour soumettre les modifications
   UpdateQuestion(rep: Response) {
 
@@ -62,22 +66,7 @@ export class QuestionDetailsComponent implements OnInit {
 
   }
 
-  /*
-   updatePlayer(player: Player): void {
-      this.playerService.updatePlayer(this.selectedPlayer, this.selectedPlayer.id_player as bigint).subscribe({
-        next: (updatedPlayer) => {
 
-          console.log('Mise à jour réussie', updatedPlayer);
-          this.players = this.players.map(_player =>
-             _player.id_player === updatedPlayer.id_player ? updatedPlayer : _player
-          );
-        },
-      });
-  }
-
-   */
-
-  constructor(private route: ActivatedRoute, private questionService : QuestionService,private responseService : ResponseService) { }
 
 
 
@@ -93,3 +82,33 @@ export class QuestionDetailsComponent implements OnInit {
   }
 
 }
+/*
+addQuestion(): void {
+  if (this.newPlayerPseudo) {
+  const newQuestion: Question = {
+    pseudo: this.newPlayerPseudo,
+    classement: 0,
+    score: 0
+  };
+  this.playerService.Add(newQuestion).subscribe(value => {
+    this.players.push(value);
+    this.newPlayerPseudo = ''; // Réinitialiser le champ après l'ajout
+  });
+}
+}
+*/
+/*
+  deletePlayer(idPlayer: bigint | undefined): void {
+    if (typeof idPlayer !== 'undefined') {
+
+      this.playerService.deletePlayer(idPlayer as bigint).subscribe(() => {
+
+        this.players = this.players.filter(players => players.id_player !== idPlayer);
+      });
+    } else {
+      console.error('Tentative de suppression d’un joueur sans ID valide.');
+
+    }
+  }
+
+ */
