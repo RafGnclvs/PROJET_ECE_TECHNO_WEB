@@ -13,7 +13,6 @@ export class PlayerService {
   }
 
   private playerUrl = "http://localhost:8080/player"
-
   findAll(): Observable<Player[]> {
     return this.http.get<Player[]>(this.playerUrl)
   }
@@ -27,5 +26,13 @@ export class PlayerService {
 
   updatePlayer(player: Player, id: bigint): Observable<Player> {
     return this.http.post<Player>(`${this.playerUrl}/${id}`, player);
+  }
+
+  getById(id:number):Observable<Player>{
+    return this.http.get<Player>(`${this.playerUrl}/${id}`)
+  }
+
+  getByIds(id:number[]):Observable<Player[]>{
+    return this.http.get<Player[]>(`${this.playerUrl}//${id}`)
   }
 }

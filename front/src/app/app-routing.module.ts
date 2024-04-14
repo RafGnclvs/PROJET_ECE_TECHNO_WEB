@@ -52,7 +52,7 @@ const routes: Routes = [
   {path : "game", component: GameComponent},
   {path : "choice", component: ChoiceComponent},
   {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
-  {path : "game/:id_cat/:numberPlayer",component: GameComponent},
+  {path : "game/:id_cat/:numberPlayer/:playersIds",component: GameComponent},
 
 ]
 

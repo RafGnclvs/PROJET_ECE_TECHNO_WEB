@@ -21,15 +21,16 @@ input {
   text-anchor: middle;
 }
 
-button {
-  display: inline-block; /* Assurez-vous que width et min-width fonctionnent comme prévu */
-  width: auto; /* Permet au bouton de s'agrandir en fonction du contenu, avec une largeur minimum fixée ci-dessous */
-  min-width: 350px; /* Définissez une largeur minimale pour tous les boutons */
+
+.button {
+  display: inline-block;
+  width: auto;
+  min-width: 350px;
   text-align: center;
   font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix */
   background-color: #e50914; /* Rouge Netflix */
   color: #fff;
-  padding: 10px 20px; /* Ajustez le padding pour être proportionnel */
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   font-size: 30px; /* La taille de la police peut nécessiter un ajustement selon la largeur du bouton */

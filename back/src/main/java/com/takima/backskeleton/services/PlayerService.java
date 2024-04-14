@@ -1,15 +1,11 @@
 package com.takima.backskeleton.services;
 
 import com.takima.backskeleton.DAO.PlayerDao;
-import com.takima.backskeleton.DTO.StudentDto;
-import com.takima.backskeleton.DTO.StudentMapper;
 import com.takima.backskeleton.models.Player;
-import com.takima.backskeleton.models.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -29,6 +25,9 @@ public class PlayerService {
 
     public Player getById(Long id) {
         return playerDao.findById(id).orElseThrow();
+    }
+    public Iterable<Player> getByIds(Long[] ids) {
+        return playerDao.findAllById(List.of(ids));
     }
 
     @Transactional

@@ -26,6 +26,11 @@ public class PlayerController {
         return playerService.getById(id);
     }
 
+    @GetMapping("//{id}")
+    public Iterable<Player>  getByIds(@PathVariable Long[] id) {
+        return playerService.getByIds(id);
+    }
+
     @DeleteMapping("/{id}")
     public void deletePlayer(@PathVariable Long id) {
         playerService.deleteById(id);

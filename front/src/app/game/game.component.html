@@ -1,5 +1,15 @@
 <div *ngFor="let question of questions">
+  <h1 class="deco"> Joueur {{ currentPlayerIndex + 1 }} saisissez votre pseudo</h1>
+
+  <ul>
+    <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image">
+    <li><button class="button" (click)="nextQuestion()">Confirmer</button></li>
+  </ul>
+</div>
+
+<!--<div *ngFor="let question of questions">
 
 
   <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image">
-</div>
+  <button class="button" (click)="display()">Confirmer</button>
+</div>-->
