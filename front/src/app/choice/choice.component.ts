@@ -3,6 +3,7 @@ import {Category} from "../models/category.model"
 import {CategoryService} from "../services/category.service"
 import {Player} from "../models/player.model"
 import {PlayerService} from "../services/player.service"
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'epf-choice',
@@ -14,13 +15,17 @@ export class ChoiceComponent implements OnInit {
   numberOfPlayers: number=0;
   categories:Category[]=[];
   playerNames:string[]=[];
+  playersSaved: Player[]=[];
+  playerInGame: Player[]=[];
   currentPlayerName: string="";
   currentPlayerIndex: number = 0;
   idCatSelected:number=0;
-  constructor(private categoryService : CategoryService) { }
+  playerAlreadyExists:boolean =false;
+  constructor(private categoryService : CategoryService, private playerService:PlayerService, private  router: Router) { }
 
   ngOnInit(): void {
     this.categoryService.findAll().subscribe(tableau => this.categories=tableau);
+    this.playerService.findAll().subscribe(tableau=>this.playersSaved=tableau);
   }
 
   togglePage(page: number): void {
@@ -41,24 +46,55 @@ export class ChoiceComponent implements OnInit {
   nextPlayer(): void {
     // Stocker le nom saisi par le joueur actuel
     this.playerNames[this.currentPlayerIndex] = this.currentPlayerName || 'Joueur ' + (this.currentPlayerIndex + 1);
+    this.confirmPlayerNames();
+    if(!this.playerAlreadyExists){
+      // Passer au joueur suivant
+      this.currentPlayerIndex++;
+      if (this.currentPlayerIndex >= this.numberOfPlayers!) {
+        // Si tous les joueurs ont saisi leur nom, passer à l'étape suivante
+        console.log('Noms des joueurs :', this.playerNames);
+      } else {
+        // Réinitialiser le nom saisi pour le prochain joueur
+        this.currentPlayerName = '';
+      }
+    }
 
-    // Passer au joueur suivant
-    this.currentPlayerIndex++;
-    if (this.currentPlayerIndex >= this.numberOfPlayers!) {
-      // Si tous les joueurs ont saisi leur nom, passer à l'étape suivante
-      this.confirmPlayerNames();
-    } else {
-      // Réinitialiser le nom saisi pour le prochain joueur
-      this.currentPlayerName = '';
+    if (this.numberOfPlayers === this.playerInGame.length) {
+      console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
+      this.router.navigate(['../game/',this.idCatSelected,this.numberOfPlayers,this.playersIdCast()]);
     }
   }
 
   confirmPlayerNames(): void {
-    // Valider les noms des joueurs si nécessaire
-    // Stocker les noms des joueurs dans une structure de données appropriée
-    console.log('Noms des joueurs :', this.playerNames);
-    // ... Autres actions à effectuer après confirmation des noms des joueurs ...
+    const existingPlayer= this.playersSaved.find(player=> player.pseudo===this.currentPlayerName);
+    if(!existingPlayer){
+      const newPlayer: Player = {
+        pseudo: this.currentPlayerName,
+        classement: 0,
+        score: 0
+      };
+      this.playerService.Add(newPlayer).subscribe(value => {
+        this.playersSaved.push(value);
+      });
+      this.playerInGame.push(<Player>this.playersSaved.find(playerAdded => playerAdded.pseudo === newPlayer.pseudo));
+      console.log('Un joueur a ete creer et ajouté dans le jeu avec le pseudo: ',this.currentPlayerName);
+    }else {
+      if(this.currentPlayerIndex===0){
+        this.playerInGame.push(existingPlayer);
+        console.log('Ce PREMIER joueur est ajoute dans le jeu avec le pseudo: ',this.currentPlayerName,this.playerInGame.length);
+      }else if (!this.playerInGame.find(player => player.pseudo === this.currentPlayerName)) {
+        this.playerInGame.push(existingPlayer);
+        console.log('Ce joueur existe pas dans le jeu et est don ajouté avec le pseudo: ',this.currentPlayerName);
+        this.playerAlreadyExists=false;
+      }else {
+        this.playerAlreadyExists=true;
+        console.log('Ce joueur existe deja dans le jeu avec le pseudo: ',this.currentPlayerName);
+      }
+    }
   }
 
-  protected readonly Array = Array
+  playersIdCast ():string{
+    return this.playerInGame.map(player =>player.id_player?.toString()).join(',');
+  }
+
 }

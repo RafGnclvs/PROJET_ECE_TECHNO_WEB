@@ -77,8 +77,6 @@ export class PlayerComponent implements OnInit {
              _player.id_player === updatedPlayer.id_player ? updatedPlayer : _player
           );
 
-
-
         },
 
       });

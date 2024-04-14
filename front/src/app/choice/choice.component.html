@@ -20,22 +20,19 @@
 
 <div *ngIf="showPage===3">
   <h1 class="deco"> Joueur {{ currentPlayerIndex + 1 }} saisissez votre pseudo</h1>
-  <!--<ul *ngFor="let _ of Array(numberOfPlayers || 0); let i = index">
-    <li >
-      <input type="text" [(ngModel)]="playerNames[i]" placeholder="Joueur {{ i + 1 }}">
-    </li>
-    <li><button class="button">Confirmer</button></li>
-  </ul>-->
-  <ul *ngIf="currentPlayerIndex+1 < numberOfPlayers; else elseBlock">
+  <div *ngIf="playerAlreadyExists">
+    <p class="deco">Ce pseudo est déjà utilisé. Veuillez en choisir un autre.</p>
+  </div>
+  <ul>
     <li><input type="text" [(ngModel)]="currentPlayerName" placeholder="Joueur {{ currentPlayerIndex + 1 }}"></li>
     <li><button class="button" (click)="nextPlayer()">Confirmer</button></li>
   </ul>
-  <ng-template #elseBlock>
+  <!--<ng-template #elseBlock>
     <ul *ngIf="currentPlayerIndex+1===numberOfPlayers">
       <li><input type="text" [(ngModel)]="currentPlayerName" placeholder="Joueur {{ currentPlayerIndex + 1 }}"></li>
-      <li><button class="button" (click)="nextPlayer()" [routerLink]="['../game/',idCatSelected,numberOfPlayers]">Confirmer</button></li>
+      <li><button class="button" (click)="nextPlayer()" [routerLink]="playerAlreadyExists===false? null: ['../game/',idCatSelected,numberOfPlayers]">Confirmer</button></li>
     </ul>
-  </ng-template>
+  </ng-template>-->
 </div>
 
 
