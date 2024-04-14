@@ -21,6 +21,7 @@ input {
   text-anchor: middle;
 }
 
+
 .button {
   display: inline-block;
   width: auto;
@@ -32,12 +33,11 @@ input {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 30px;
+  font-size: 30px; /* La taille de la police peut nécessiter un ajustement selon la largeur du bouton */
   cursor: pointer;
   margin-bottom: 25px;
   margin-top: 25px;
   transition: transform 0.3s ease;
-
 }
 
 .deco{

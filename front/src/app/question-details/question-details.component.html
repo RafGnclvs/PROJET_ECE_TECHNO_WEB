@@ -1,5 +1,65 @@
-<p>question-details works!</p>
 
+
+<!--
+<p>question-details works!</p>
 <p>ID QUESTION {{id}}</p>
 
 <p>ID RESPONSE {{id_rep}}</p>
+
+<div *ngFor="let quest of questions">
+
+  <div *ngIf="quest.id_question===id">
+    <img [src]="path+quest.name_img+'.png'" alt="Description de l'image" class="game-image">
+    <div *ngFor="let rep of responses" >
+      <div *ngIf="rep.id_response===id_rep">
+        <p>Réponse A : {{rep.resp1}}</p>
+        <p>Réponse B : {{rep.resp2}}</p>
+        <p>Réponse C : {{rep.resp3}}</p>
+        <p>Réponse D: {{rep.good_resp}}</p>
+        <a mat-raised-button color="primary" >Modify</a>
+        <button mat-icon-button color="warn" >
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+class="netflix-style-container"
+-->
+
+<link href="https://fonts.cdnfonts.com/css/skarpa" rel="stylesheet">
+<div class="netflix-style-container">
+
+<div *ngFor="let quest of questions">
+  <div *ngIf="quest.id_question===id">
+    <img [src]="path+quest.name_img+'.png'" alt="Description de l'image" class="game-image">
+    <div *ngFor="let rep of responses">
+      <div *ngIf="rep.id_response===id_rep">
+        <div  *ngIf="!editMode">
+          <p>Réponse A : {{rep.resp1}}</p>
+          <p>Réponse B : {{rep.resp2}}</p>
+          <p>Réponse C : {{rep.resp3}}</p>
+          <p>Réponse D: {{rep.good_resp}}</p>
+          <button (click)="Changement(rep)" >Modifier</button>
+        </div>
+        <div class="InputModif" *ngIf="editMode">
+          <form (ngSubmit)="UpdateQuestion(rep)">
+            <input type="text" [(ngModel)]="SelectedResponse.resp1" name="resp1">
+            <input type="text" [(ngModel)]="SelectedResponse.resp2" name="resp2">
+            <input type="text" [(ngModel)]="SelectedResponse.resp3" name="resp3">
+            <button type="submit" >Save</button>
+            <button (click)="editMode = false" >Cancel</button>
+          </form>
+        </div>
+        <button >Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

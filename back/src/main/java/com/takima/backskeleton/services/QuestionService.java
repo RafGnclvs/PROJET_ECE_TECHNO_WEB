@@ -45,5 +45,17 @@ public class QuestionService {
         questionDao.deleteById(id);
     }
 
+    @Transactional
+    public Question addQuestion (Question question) {
+        return questionDao.save(question);
+    }
+
+    @Transactional
+    public Question updateQuestion(Question question, Long id) {
+        questionDao.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Question doesn't exist"));
+
+        return questionDao.save(question);
+    }
 
 }

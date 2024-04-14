@@ -1,0 +1,42 @@
+.button {
+  display: inline-block;
+  width: auto;
+  min-width: 350px;
+  text-align: center;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  background-color: #e50914; /* Rouge Netflix */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  transition: transform 0.3s ease;
+}
+
+
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding-top: 50px;
+}
+
+
+.game-image {
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
