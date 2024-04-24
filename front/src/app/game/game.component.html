@@ -1,11 +1,29 @@
-<div *ngFor="let question of questions">
-  <h1 class="deco"> Joueur {{ currentPlayerIndex + 1 }} saisissez votre pseudo</h1>
 
-  <ul>
-    <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image">
-    <li><button class="button" (click)="nextQuestion()">Confirmer</button></li>
-  </ul>
+<div class="page-container">
+  <ng-container *ngIf="(currentQuestionIndex<questions.length)&&(currentPlayerIndex<players.length )">
+    <h1 class="deco"> Quel est le nom de ce personnage ?</h1>
+    <img [src]="path+questions[currentQuestionIndex].name_img+'.png'" alt="Description de l'image" class="game-image">
+    <h2> Joueur " {{ players[currentPlayerIndex].pseudo }}": Faites votre choix </h2>
+    <ng-container *ngFor="let response of reponseShuffled">
+      <ul>
+        <li><button class="button" (click)="scorCalculation(response)">{{response}}</button></li>
+      </ul>
+    </ng-container>
+  </ng-container>
 </div>
+
+
+<!--<ng-container *ngFor="let response of responses">
+      <ng-container *ngIf="questions[currentQuestionIndex].id_res===(response.id_response || 0)">
+        <h2> Joueur " {{ players[currentPlayerIndex].pseudo }}": Faites votre choix </h2>
+        <ul>
+          <li><button class="button" (click)="scorCalculation(response.resp1)">{{response.resp1}}</button></li>
+          <li><button class="button" (click)="scorCalculation(response.resp2)">{{response.resp2}}</button></li>
+          <li><button class="button" (click)="scorCalculation(response.resp3)">{{response.resp3}}</button></li>
+          <li><button class="button" (click)="nextPlayer()">{{response.good_resp}}</button></li>
+        </ul>
+      </ng-container>
+    </ng-container>-->
 
 <!--<div *ngFor="let question of questions">
 

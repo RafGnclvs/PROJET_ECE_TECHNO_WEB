@@ -1,8 +1,25 @@
+/*
+body {
+  background-color: #000;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding-top: 50px;
+}
+
 .game-image {
   max-width: 200px;
   height: auto;
   display: block;
-  margin-bottom: 10px;
 }
 
 .button {
@@ -10,8 +27,8 @@
   width: auto;
   min-width: 350px;
   text-align: center;
-  font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix */
-  background-color: #e50914; /* Rouge Netflix */
+  font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix
+  background-color: #e50914; /* Rouge Netflix
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -21,5 +38,74 @@
   margin-bottom: 25px;
   margin-top: 25px;
   transition: transform 0.3s ease;
+}
 
+.deco{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  padding-top: 70px;
+}
+*/
+body{
+  margin: 0;
+}
+h2{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  padding-top: 30px;
+  margin-bottom: 45px;
+}
+.page-container {
+  background-color: #000;
+  font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  //padding-top: 30px;
+}
+
+.game-image {
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.button {
+  display: inline-block;
+  width: auto;
+  min-width: 350px;
+  text-align: center;
+  background-color: #e50914; /* Rouge Netflix */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  //margin-top: 25px;
+  transition: transform 0.3s ease;
+}
+
+.deco{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  padding-top: 30px;
 }
