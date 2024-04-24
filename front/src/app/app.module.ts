@@ -20,6 +20,7 @@ import { AdminComponent } from './admin/admin.component';
 import { QuestionDetailsComponent } from './question-details/question-details.component';
 import { GameComponent } from './game/game.component';
 import { ChoiceComponent } from './choice/choice.component';
+import { EndgameComponent } from './endgame/endgame.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ChoiceComponent } from './choice/choice.component';
     AdminComponent,
     QuestionDetailsComponent,
     GameComponent,
-    ChoiceComponent
+    ChoiceComponent,
+    EndgameComponent
   ],
   imports: [
     BrowserModule,
