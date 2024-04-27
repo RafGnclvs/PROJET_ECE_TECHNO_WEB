@@ -46,22 +46,30 @@ export class ChoiceComponent implements OnInit {
   nextPlayer(): void {
     // Stocker le nom saisi par le joueur actuel
     this.playerNames[this.currentPlayerIndex] = this.currentPlayerName || 'Joueur ' + (this.currentPlayerIndex + 1);
-    this.confirmPlayerNames();
-    if(!this.playerAlreadyExists){
-      // Passer au joueur suivant
 
-      this.currentPlayerIndex++;
-      if (this.currentPlayerIndex >= this.numberOfPlayers!) {
-        // Si tous les joueurs ont saisi leur nom, passer à l'étape suivante
-        console.log('Noms des joueurs :', this.playerNames);
-      } else {
-        // Réinitialiser le nom saisi pour le prochain joueur
-        this.currentPlayerName = '';
-      }
+    if (this.numberOfPlayers === this.playerInGame.length) {
+      console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
+      this.router.navigate(['../game/',this.idCatSelected,this.numberOfPlayers,this.playersIdCast()]);
     }
-    this.currentPlayerName = '';
+    else
+    {
+      this.confirmPlayerNames();
+      if(!this.playerAlreadyExists){
+        // Passer au joueur suivant
 
+        this.currentPlayerIndex++;
+        if (this.currentPlayerIndex >= this.numberOfPlayers!) {
+          // Si tous les joueurs ont saisi leur nom, passer à l'étape suivante
+          console.log('Noms des joueurs :', this.playerNames);
+        } else {
+          // Réinitialiser le nom saisi pour le prochain joueur
+          this.currentPlayerName = '';
+        }
+      }
+      this.currentPlayerName = '';
 
+      console.log("ON EST DANS NEXT PLAYER ",this.playerAlreadyExists);
+    }
     if (this.numberOfPlayers === this.playerInGame.length) {
       console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
       this.router.navigate(['../game/',this.idCatSelected,this.numberOfPlayers,this.playersIdCast()]);

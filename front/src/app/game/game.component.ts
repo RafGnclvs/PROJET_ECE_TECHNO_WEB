@@ -134,9 +134,9 @@ export class GameComponent implements OnInit {
   display():void{
     console.log("Liste des joueurs recup mon gars", this.players);
   }
+
   ClassementJou(): void {
     this.players.sort((a, b) => b.score - a.score);
-
 
       let lastScore = 0;
       let lastRank = 0;
@@ -154,11 +154,24 @@ export class GameComponent implements OnInit {
           lastScore = player.score;
           gap = 1;
         }
+
+        this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
+          {
+            next : (nv)=>
+            {
+              console.log('Mise à jour réussie', nv);
+              this.players = this.players.map(_player =>
+                _player.id_player === nv.id_player ? nv : _player
+              );
+            }
+          }
+        )
       });
 
 
-
     }
+
+
 
   protected readonly BigInt = BigInt
   protected readonly String = String
