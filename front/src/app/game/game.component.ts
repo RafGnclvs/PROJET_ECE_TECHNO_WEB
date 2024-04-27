@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from "@angular/router"
 import { Player } from "../models/player.model"
 import { PlayerService } from "../services/player.service"
 
-
 @Component({
   selector: 'epf-game',
   templateUrl: './game.component.html',
@@ -28,8 +27,13 @@ export class GameComponent implements OnInit {
   currentQuestionIndex:number=0;
   currentResponse?:Response;
   reponseShuffled:string[]=[];
-  numberOfQuestionToSelected:number=2;
+  numberOfQuestionToSelected:number=5;
+  showPage: number=0;
+
   constructor(private gameService:GameService, private questionService : QuestionService,private responseService : ResponseService,private playerService: PlayerService,private route: ActivatedRoute, private  router: Router) {}
+  togglePage(page: number): void {
+    this.showPage=page;
+  }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
@@ -110,14 +114,16 @@ export class GameComponent implements OnInit {
       this.responseShuffling();
     } else {
       console.log('FIN DES QUESTIONS! :');
-      this.router.navigate(['../player/']);
+      this.ClassementJou();
+      //this.router.navigate(['../player/']);
+      this.togglePage(1);
     }
   }
 
   scorCalculation(selectedResponse: string):void{
     if(this.currentResponse){
       if(selectedResponse===this.currentResponse.good_resp){
-        this.players[this.currentPlayerIndex].score++;
+        this.players[this.currentPlayerIndex].score=this.players[this.currentPlayerIndex].score+3;
       }
       console.log("Joueur actuel: ",this.players[this.currentPlayerIndex]);
       this.nextPlayer();
@@ -128,8 +134,33 @@ export class GameComponent implements OnInit {
   display():void{
     console.log("Liste des joueurs recup mon gars", this.players);
   }
+  ClassementJou(): void {
+    this.players.sort((a, b) => b.score - a.score);
 
+
+      let lastScore = 0;
+      let lastRank = 0;
+      let gap = 1;
+
+      this.players.forEach((player, index) => {
+        if (player.score === lastScore) {
+
+          player.classement = lastRank;
+          gap++;
+        } else {
+
+          lastRank += gap;
+          player.classement = lastRank;
+          lastScore = player.score;
+          gap = 1;
+        }
+      });
+
+
+
+    }
 
   protected readonly BigInt = BigInt
   protected readonly String = String
 }
+

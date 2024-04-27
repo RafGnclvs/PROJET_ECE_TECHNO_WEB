@@ -24,3 +24,38 @@
   font-family: 'Arial', sans-serif; /* Police de caractère, Arial est assez neutre et professionnel */
   font-size: 16px; /* Taille de la police pour améliorer la lisibilité */
 }
+body {
+  font-family: Arial, sans-serif;
+}
+
+.btn-net {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.btn-net:hover {
+  background-color: #45a049;
+}
+
+.zone {
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-player {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+}

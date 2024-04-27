@@ -49,6 +49,7 @@ export class ChoiceComponent implements OnInit {
     this.confirmPlayerNames();
     if(!this.playerAlreadyExists){
       // Passer au joueur suivant
+
       this.currentPlayerIndex++;
       if (this.currentPlayerIndex >= this.numberOfPlayers!) {
         // Si tous les joueurs ont saisi leur nom, passer à l'étape suivante
@@ -58,6 +59,8 @@ export class ChoiceComponent implements OnInit {
         this.currentPlayerName = '';
       }
     }
+    this.currentPlayerName = '';
+
 
     if (this.numberOfPlayers === this.playerInGame.length) {
       console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
@@ -66,35 +69,36 @@ export class ChoiceComponent implements OnInit {
   }
 
   confirmPlayerNames(): void {
-    const existingPlayer= this.playersSaved.find(player=> player.pseudo===this.currentPlayerName);
-    if(!existingPlayer){
+    const existingPlayer = this.playersSaved.find(player => player.pseudo === this.currentPlayerName);
+
+    if (!existingPlayer) {
       const newPlayer: Player = {
         pseudo: this.currentPlayerName,
         classement: 0,
         score: 0
       };
+
       this.playerService.Add(newPlayer).subscribe(value => {
         this.playersSaved.push(value);
+        this.playerInGame.push(value); // Ajoute directement le joueur retourné par le service
+        console.log('Un joueur a été créé et ajouté dans le jeu avec le pseudo:', value.pseudo, this.playerInGame);
       });
-      this.playerInGame.push(<Player>this.playersSaved.find(playerAdded => playerAdded.pseudo === newPlayer.pseudo));
-      console.log('Un joueur a ete creer et ajouté dans le jeu avec le pseudo: ',this.currentPlayerName);
-    }else {
-      if(this.currentPlayerIndex===0){
+    } else {
+      if (!this.playerInGame.find(player => player.pseudo === existingPlayer.pseudo)) {
         this.playerInGame.push(existingPlayer);
-        console.log('Ce PREMIER joueur est ajoute dans le jeu avec le pseudo: ',this.currentPlayerName,this.playerInGame.length);
-      }else if (!this.playerInGame.find(player => player.pseudo === this.currentPlayerName)) {
-        this.playerInGame.push(existingPlayer);
-        console.log('Ce joueur existe pas dans le jeu et est don ajouté avec le pseudo: ',this.currentPlayerName);
-        this.playerAlreadyExists=false;
-      }else {
-        this.playerAlreadyExists=true;
-        console.log('Ce joueur existe deja dans le jeu avec le pseudo: ',this.currentPlayerName);
+        console.log("Ce joueur existant n'est pas dans le jeu et est donc ajouté avec le pseudo: ", existingPlayer.pseudo);
+        this.playerAlreadyExists = false;
+      }
+      else {
+        this.playerAlreadyExists = true;
+        console.log('Ce joueur existe déjà dans le jeu avec le pseudo: ', existingPlayer.pseudo);
       }
     }
   }
 
-  playersIdCast ():string{
-    return this.playerInGame.map(player =>player.id_player?.toString()).join(',');
+  playersIdCast (): string {
+    return this.playerInGame.map(player => player.id_player ? player.id_player.toString() : 'undefined').join(',');
   }
+
 
 }
