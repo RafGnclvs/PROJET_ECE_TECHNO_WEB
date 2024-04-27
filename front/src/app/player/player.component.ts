@@ -6,6 +6,7 @@ import { PlayerService } from "../services/player.service"
 import { Student } from "../models/student.model"
 import { map, Observable } from "rxjs"
 import { Router } from "@angular/router"
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'epf-player',
@@ -17,18 +18,29 @@ export class PlayerComponent implements OnInit {
 
   players : Player[] = [];
   newPlayerPseudo: string = '';
-
+  showPage: number=0;
   selectedPlayer: Player = { pseudo: '', score: 0, classement: 0 }; // Adaptez selon votre modèle
+  verificationAjout: boolean=false;
+  VerfiModif: boolean=false;
+
+  constructor(private playerService : PlayerService, private location:Location) { }
 
 
-  constructor(private playerService : PlayerService) { }
+
 
   ngOnInit(): void {
     this.playerService.findAll().subscribe(tableau => this.players=tableau);
   }
   selectPlayer(player: Player): void {
     this.selectedPlayer = { ...player };
+    this.VerfiModif=true;
   }
+  togglePage(page: number): void {
+    this.showPage=page;
+  }
+
+
+
   /*
   Add():void
   {
@@ -41,6 +53,9 @@ export class PlayerComponent implements OnInit {
 
   }
   addPlayer(): void {
+    this.verification();
+    if(!this.verificationAjout)
+    {
     if (this.newPlayerPseudo) {
       const newPlayer: Player = {
         pseudo: this.newPlayerPseudo,
@@ -52,6 +67,7 @@ export class PlayerComponent implements OnInit {
         this.newPlayerPseudo = ''; // Réinitialiser le champ après l'ajout
       });
     }
+  }
   }
 
   deletePlayer(idPlayer: bigint | undefined): void {
@@ -77,9 +93,23 @@ export class PlayerComponent implements OnInit {
           );
         },
       });
+
+    this.VerfiModif=false;
+
   }
 
 
-
+verification(): void
+{
+  if(this.players.find(player => player.pseudo === this.newPlayerPseudo))
+  {
+    this.newPlayerPseudo = '';
+    this.verificationAjout=true;
+  }
+  else
+  {
+    this.verificationAjout=false;
+  }
+}
 
 }

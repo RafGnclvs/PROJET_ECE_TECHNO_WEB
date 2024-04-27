@@ -1,5 +1,5 @@
 
-<div class="page-container">
+<div class="page-container" *ngIf="showPage===0">
   <ng-container *ngIf="(currentQuestionIndex<questions.length)&&(currentPlayerIndex<players.length )">
     <h1 class="deco"> Quel est le nom de ce personnage ?</h1>
     <img [src]="path+questions[currentQuestionIndex].name_img+'.png'" alt="Description de l'image" class="game-image">
@@ -31,3 +31,24 @@
   <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image">
   <button class="button" (click)="display()">Confirmer</button>
 </div>-->
+
+<div *ngIf="showPage===1">
+
+    <table>
+      <thead>
+      <tr>
+        <th>Pseudo</th>
+        <th>Score</th>
+        <th>Classement</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.pseudo }}</td>
+        <td>{{ player.score }}</td>
+        <td>{{ player.classement }}</td>
+        <td>
+      </tr>
+      </tbody>
+    </table>
+</div>
