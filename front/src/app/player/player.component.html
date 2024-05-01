@@ -112,6 +112,9 @@
             </div>
             <button type="submit" class="BTN_NET">Mettre à jour le joueur</button>
           </form>
+          <div *ngIf="test">
+            <p class="deco">Le pseudo est déjà utilisé :( Veuillez en choisir un nouveau !</p>
+          </div>
         </div>
       </td>
     </tr>
