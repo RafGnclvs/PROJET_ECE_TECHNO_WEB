@@ -1,6 +1,17 @@
 # README
-## Setup du projet avant le premier lancement
+Ce projet à été réalisé par Leticia MOUSSAOUI, Ghita OUANNANE et Rafael GONCALVES.
+Nous avons décidé de réaliser un site sur lequel vous pourrez répondre à des quiz sur les thèmes suivants : Films, Séries et Animés.
 
+## Setup du projet avant le premier lancement
+### Étape 1 : Cloner le dépôt sur votre machine
+- Ouvrez un terminal Git
+- Exécuter la commande : git clone https://github.com/RafGnclvs/PROJET_ECE_TECHNO_WEB.git
+### Étape 2 : 
+### Étape 3 :
+### Étape 4 :
+### Étape 5 :
+### Étape 6 :
+### Étape 7 :
 
 ## JOUEURS
 Un joueur peut effectuer deux actions sur cette API :
@@ -20,7 +31,7 @@ Pour lancer une partie, rien de plus simple :
 ### Consulter le score des joueurs
 Pour consulter le score, cliquer sur l'onglet "USER" situé sur la barre de menu du site. Deux bouttons s'afficheront "Ajouter" et "Faire des modifications". Ces deux boutons vous permettront d'accéder aux scores des joueurs, ainsi qu'à leur classement.
 
-##ADMIN
+## ADMIN
 L'admin peut effectuer deux actions :
 - Modifier les users (modifier ou supprimer)
 - Modifier les questions (modifier ou supprimer)
