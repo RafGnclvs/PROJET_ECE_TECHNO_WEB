@@ -22,6 +22,7 @@ export class PlayerComponent implements OnInit {
   selectedPlayer: Player = { pseudo: '', score: 0, classement: 0 }; // Adaptez selon votre modèle
   verificationAjout: boolean=false;
   VerfiModif: boolean=false;
+  test : boolean=false ;
 
   constructor(private playerService : PlayerService, private location:Location) { }
 
@@ -84,6 +85,12 @@ export class PlayerComponent implements OnInit {
   }
 
   updatePlayer(player: Player): void {
+    if(this.players.find(p => p.pseudo === this.selectedPlayer.pseudo))
+    {
+      console.log('DEJA EXISTANT',this.selectedPlayer);
+      this.test=true;
+    }
+    else {
       this.playerService.updatePlayer(this.selectedPlayer, this.selectedPlayer.id_player as bigint).subscribe({
         next: (updatedPlayer) => {
 
@@ -95,7 +102,8 @@ export class PlayerComponent implements OnInit {
       });
 
     this.VerfiModif=false;
-
+      this.test=false;
+  }
   }
 
 
@@ -111,5 +119,17 @@ verification(): void
     this.verificationAjout=false;
   }
 }
+  verificationupdate():void
+  {
+    if(this.players.find(player => player.pseudo ==="" ))
+    {
+      this.newPlayerPseudo = '';
+      this.verificationAjout=true;
+    }
+    else
+    {
+      this.verificationAjout=false;
+    }
+  }
 
 }

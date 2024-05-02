@@ -151,9 +151,9 @@ export class GameComponent implements OnInit {
   display():void{
     console.log("Liste des joueurs recup mon gars", this.players);
   }
+
   ClassementJou(): void {
     this.players.sort((a, b) => b.score - a.score);
-
 
       let lastScore = 0;
       let lastRank = 0;
@@ -172,6 +172,19 @@ export class GameComponent implements OnInit {
           gap = 1;
         }
       });
+    
+    this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
+          {
+            next : (nv)=>
+            {
+              console.log('Mise à jour réussie', nv);
+              this.players = this.players.map(_player =>
+                _player.id_player === nv.id_player ? nv : _player
+              );
+            }
+          }
+        )
+      });
   }
 
   generateRectangleHeights(): void {
@@ -187,6 +200,8 @@ export class GameComponent implements OnInit {
       'margin-right.px': index !== this.rectangleHeights.length - 1 ? 5 : 0 // Espacement entre les rectangles
     };
   }
+
+
 
 
   protected readonly BigInt = BigInt

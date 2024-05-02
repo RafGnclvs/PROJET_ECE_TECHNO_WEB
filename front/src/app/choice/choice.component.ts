@@ -47,6 +47,7 @@ export class ChoiceComponent implements OnInit {
     // Stocker le nom saisi par le joueur actuel
     this.playerNames[this.currentPlayerIndex] = this.currentPlayerName || 'Joueur ' + (this.currentPlayerIndex + 1);
 
+
     this.confirmPlayerNames();
     if(!this.playerAlreadyExists){
       // Passer au joueur suivant
