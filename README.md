@@ -20,7 +20,7 @@ Pour lancer une partie, rien de plus simple :
 ### Consulter le score des joueurs
 Pour consulter le score, cliquer sur l'onglet "USER" situé sur la barre de menu du site. Deux bouttons s'afficheront "Ajouter" et "Faire des modifications". Ces deux boutons vous permettront d'accéder aux scores des joueurs, ainsi qu'à leur classement.
 
-## ADMIN
+##ADMIN
 L'admin peut effectuer deux actions :
 - Modifier les users (modifier ou supprimer)
 - Modifier les questions (modifier ou supprimer)
