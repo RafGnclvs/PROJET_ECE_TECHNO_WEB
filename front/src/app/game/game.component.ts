@@ -171,9 +171,8 @@ export class GameComponent implements OnInit {
           lastScore = player.score;
           gap = 1;
         }
-      });
-    
-    this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
+
+        this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
           {
             next : (nv)=>
             {
@@ -182,9 +181,10 @@ export class GameComponent implements OnInit {
                 _player.id_player === nv.id_player ? nv : _player
               );
             }
-          }
-        )
+          });
       });
+
+
   }
 
   generateRectangleHeights(): void {
