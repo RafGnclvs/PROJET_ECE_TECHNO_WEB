@@ -30,7 +30,7 @@
 
   <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image">
   <button class="button" (click)="display()">Confirmer</button>
-</div>-->
+</div>
 
 <div *ngIf="showPage===1">
 
@@ -51,4 +51,43 @@
       </tr>
       </tbody>
     </table>
+</div>
+
+<div *ngIf="showPage === 1">
+  <div class="rectangle-container">
+    <div class="rectangle" *ngFor="let height of rectangleHeights; let i = index" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)">
+
+    <ul>
+      <li>PSEUDO 1</li>
+    </ul>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showPage === 1">
+  <div class="rectangle-container">
+    <div *ngFor="let height of rectangleHeights; let i = index" class="rectangle-wrapper">
+      <ul>
+        <li>{{ players[i].pseudo }}   {{ players[i].score }}  {{ players[i].classement }}</li>
+      </ul>
+      <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)">
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div *ngIf="showPage === 1">
+  <div class="rectangle-container">
+    <div *ngFor="let height of rectangleHeights; let i = index" class="rectangle-wrapper">
+      <table>
+        <tr>
+          <td>{{ players[i].pseudo }}</td>
+          <td>{{ players[i].score }}</td>
+          <td>{{ players[i].classement }}</td>
+        </tr>
+      </table>
+      <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)">
+      </div>
+    </div>
+  </div>
 </div>

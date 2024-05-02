@@ -14,7 +14,7 @@ import { AdminComponent } from "./admin/admin.component"
 import { QuestionDetailsComponent } from "./question-details/question-details.component"
 import { GameComponent } from "./game/game.component"
 import { ChoiceComponent } from "./choice/choice.component"
-
+import { EndgameComponent} from "./endgame/endgame.component"
 
 
 const routes: Routes = [
@@ -53,6 +53,7 @@ const routes: Routes = [
   {path : "choice", component: ChoiceComponent},
   {path : "question-details/:id/:id_rep", component: QuestionDetailsComponent},
   {path : "game/:id_cat/:numberPlayer/:playersIds",component: GameComponent},
+  {path : "endgame", component: EndgameComponent},
 
 ]
 

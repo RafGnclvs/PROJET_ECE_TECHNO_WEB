@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from "@angular/core"
+import { Component, OnInit, Input } from "@angular/core"
 import { GameService } from "../services/game.service"
 import {Game} from "../models/game.model"
 import {Question} from "../models/question.model"
@@ -8,11 +8,23 @@ import {ResponseService} from "../services/response.service"
 import { ActivatedRoute, Router } from "@angular/router"
 import { Player } from "../models/player.model"
 import { PlayerService } from "../services/player.service"
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 
 @Component({
   selector: 'epf-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
+  animations: [
+    trigger('increaseHeight', [
+      state('active', style({
+        height: '{{ finalHeight }}px'
+      }), { params: { finalHeight: 300 } }),
+      transition('* => active', [
+        animate('3s')
+      ])
+    ])
+  ]
 })
 export class GameComponent implements OnInit {
   game:Game[]=[];
@@ -27,9 +39,13 @@ export class GameComponent implements OnInit {
   currentQuestionIndex:number=0;
   currentResponse?:Response;
   reponseShuffled:string[]=[];
-  numberOfQuestionToSelected:number=5;
+  numberOfQuestionToSelected:number=1;
   showPage: number=0;
 
+  rectangleCount: number = 5; // Nombre de rectangles
+  initialHeight: number = 300; // Largeur initiale du premier rectangle
+  rectangleHeights: number[] = [];
+  rectangleState = 'active';
   constructor(private gameService:GameService, private questionService : QuestionService,private responseService : ResponseService,private playerService: PlayerService,private route: ActivatedRoute, private  router: Router) {}
   togglePage(page: number): void {
     this.showPage=page;
@@ -58,6 +74,7 @@ export class GameComponent implements OnInit {
       this.players = this.playersIds.map(id => playerMap.get(id)!);
       //this.players=tableau;
     });
+    this.generateRectangleHeights();
   }
 
   getResponses():void{
@@ -114,8 +131,8 @@ export class GameComponent implements OnInit {
       this.responseShuffling();
     } else {
       console.log('FIN DES QUESTIONS! :');
+      //this.router.navigate(['../endgame/']);
       this.ClassementJou();
-      //this.router.navigate(['../player/']);
       this.togglePage(1);
     }
   }
@@ -123,7 +140,7 @@ export class GameComponent implements OnInit {
   scorCalculation(selectedResponse: string):void{
     if(this.currentResponse){
       if(selectedResponse===this.currentResponse.good_resp){
-        this.players[this.currentPlayerIndex].score=this.players[this.currentPlayerIndex].score+3;
+        this.players[this.currentPlayerIndex].score=this.players[this.currentPlayerIndex].score+1;
       }
       console.log("Joueur actuel: ",this.players[this.currentPlayerIndex]);
       this.nextPlayer();
@@ -154,8 +171,9 @@ export class GameComponent implements OnInit {
           lastScore = player.score;
           gap = 1;
         }
-
-        this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
+      });
+    
+    this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
           {
             next : (nv)=>
             {
@@ -167,9 +185,22 @@ export class GameComponent implements OnInit {
           }
         )
       });
+  }
 
-
+  generateRectangleHeights(): void {
+    if(this.numberPlayer){
+      for (let i = 0; i < this.numberPlayer; i++) {
+        this.rectangleHeights.push(this.initialHeight - i * 25); // Diminuer la hauteur de 25px pour chaque rectangle
+      }
     }
+  }
+
+  getRectangleStyle(index: number): any {
+    return {
+      'margin-right.px': index !== this.rectangleHeights.length - 1 ? 5 : 0 // Espacement entre les rectangles
+    };
+  }
+
 
 
 

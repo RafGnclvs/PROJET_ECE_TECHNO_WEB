@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core"
+import { ActivatedRoute, Router } from "@angular/router"
+import { Player } from "../models/player.model"
 
 @Component({
   selector: 'epf-endgame',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./endgame.component.scss']
 })
 export class EndgameComponent implements OnInit {
+  players:Player[]=[];
+  constructor(private route: ActivatedRoute, private  router: Router) {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
+
   }
 
 }
