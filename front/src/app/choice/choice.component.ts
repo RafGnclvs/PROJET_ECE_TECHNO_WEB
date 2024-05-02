@@ -46,12 +46,12 @@ export class ChoiceComponent implements OnInit {
   nextPlayer(): void {
     // Stocker le nom saisi par le joueur actuel
     this.playerNames[this.currentPlayerIndex] = this.currentPlayerName || 'Joueur ' + (this.currentPlayerIndex + 1);
+
     this.confirmPlayerNames();
     if(!this.playerAlreadyExists){
       // Passer au joueur suivant
-
       this.currentPlayerIndex++;
-      if (this.currentPlayerIndex >= this.numberOfPlayers!) {
+      if (this.currentPlayerIndex >= this.numberOfPlayers) {
         // Si tous les joueurs ont saisi leur nom, passer à l'étape suivante
         console.log('Noms des joueurs :', this.playerNames);
       } else {
@@ -60,12 +60,6 @@ export class ChoiceComponent implements OnInit {
       }
     }
     this.currentPlayerName = '';
-
-
-    if (this.numberOfPlayers === this.playerInGame.length) {
-      console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
-      this.router.navigate(['../game/',this.idCatSelected,this.numberOfPlayers,this.playersIdCast()]);
-    }
   }
 
   confirmPlayerNames(): void {
@@ -82,7 +76,13 @@ export class ChoiceComponent implements OnInit {
         this.playersSaved.push(value);
         this.playerInGame.push(value); // Ajoute directement le joueur retourné par le service
         console.log('Un joueur a été créé et ajouté dans le jeu avec le pseudo:', value.pseudo, this.playerInGame);
+
+        if (this.numberOfPlayers <= this.playerInGame.length) {
+          console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
+          this.router.navigate(['../game/',this.idCatSelected,this.numberOfPlayers,this.playersIdCast()]);
+        }
       });
+      this.playerAlreadyExists = false;
     } else {
       if (!this.playerInGame.find(player => player.pseudo === existingPlayer.pseudo)) {
         this.playerInGame.push(existingPlayer);
@@ -92,6 +92,11 @@ export class ChoiceComponent implements OnInit {
       else {
         this.playerAlreadyExists = true;
         console.log('Ce joueur existe déjà dans le jeu avec le pseudo: ', existingPlayer.pseudo);
+      }
+
+      if (this.numberOfPlayers <= this.playerInGame.length) {
+        console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
+        this.router.navigate(['../game/',this.idCatSelected,this.numberOfPlayers,this.playersIdCast()]);
       }
     }
   }
