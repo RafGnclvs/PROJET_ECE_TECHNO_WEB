@@ -34,7 +34,7 @@ sinon
 - Ouvrez le front sur VS CODE
 - Ouvrez un terminal dans VS CODE
 - Exécuter la commande : npm start
-Attendez que la compilation du front soit terminé
+- Attendez que la compilation du front soit terminé
 ### Étape 8 : Lancer l'API
 - Lancer votre navigateur
 - Dans le barre d'URL : http://localhost:4200
