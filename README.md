@@ -1,18 +1,47 @@
 # README
-Ce projet à été réalisé par Leticia MOUSSAOUI, Ghita OUANNANE et Rafael GONCALVES.
+Ce projet à été réalisé par **Leticia MOUSSAOUI**, **Ghita OUANNANE** et **Rafael GONCALVES**.
 Nous avons décidé de réaliser un site sur lequel vous pourrez répondre à des quiz sur les thèmes suivants : Films, Séries et Animés.
 
 ## Setup du projet avant le premier lancement
 ### Étape 1 : Cloner le dépôt sur votre machine
 - Ouvrez un terminal Git
 - Exécuter la commande : git clone https://github.com/RafGnclvs/PROJET_ECE_TECHNO_WEB.git
-### Étape 2 : 
-### Étape 3 :
-### Étape 4 :
-### Étape 5 :
-### Étape 6 :
-### Étape 7 :
+### Étape 2 : Téléchargement Java 17
+- Ouvrez le back sur Intellij
+- Onglet menu > File > Project Structure
+- Dans Project > SDK > Sélectionner Amazon Corretto version 17.0.10
+- Dans Project > Language level > Sélectionner 17 > OK
+- Ouvrir un terminal dans Intellij
+### Étape 3 : Lancer docker
+- Lancer Docker Desktop
+- Dans le terminal Intellij, exécuter la commande : docker-compose up
+- Run le conteneur : docker run back
+### Étape 4 : Init la bdd
+- Aller dans l'onglet épinglé, à droite, Database > Data Source > PostgreSQL
+- Insérer les informations présent dans le fichier .env (**user:** root ; **password:** toor ; **Database:** db-quiz)
+- Tester la connexion > (Si test validé) Apply > OK
+- Dans le dossier initdb > Sélectionner les deux fichiers "1_TABLES" et "2_DEFAULT_ENTRIES" > Click droit > Run
+- Cliquer sur le **+** > Sélectionner **db-quiz@localhost** > Run
+### Étape 5 : Modifier les configurations d'éxécution du back
+- Sélectionner BackSkeletonApplicationTest > Click droit > Edit Configurations  
+sinon
+- A coté des boutons Run et Debug situé en haut, Sélectionner BackSkeletonApplicationTest > Click sur la flèche > Edit Configurations
+- Cocher Enable EnvFile > Cliquer sur **+** > Sélectionner le fichier .env > Enabled
+- Build and run > Sélectionner corretto-17
+- Modify options > Add VM options > Ajouter l'option -Xms256m -Xmx256m
+### Étape 6 : Run le back en cliquant sur le bouton pour run ou click droit > Run BackSkeletonApplicationTests
+### Étape 7 : Run le front 
+- Ouvrez le front sur VS CODE
+- Ouvrez un terminal dans VS CODE
+- Exécuter la commande : npm start
+Attendez que la compilation du front soit terminé
+### Étape 8 : Lancer l'API
+- Lancer votre navigateur
+- Dans le barre d'URL : http://localhost:4200
 
+**VOUS AVEZ LANCÉ NOTRE PROJET !**
+
+## Description des fonctionnalités de notre site
 ## JOUEURS
 Un joueur peut effectuer deux actions sur cette API :
 - Lancer une partie
