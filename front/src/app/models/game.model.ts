@@ -1,8 +1,8 @@
 export interface Game {
-  id_game: number
-  id_p1: number
-  id_p2: number
-  id_p3: number
-  id_p4: number
-  id_cat: number
+  id_game?: bigint
+  id_p1?: bigint
+  id_p2?: bigint
+  id_p3?: bigint
+  id_p4?: bigint
+  id_cat?: number
 }

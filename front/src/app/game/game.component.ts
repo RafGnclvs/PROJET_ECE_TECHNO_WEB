@@ -21,13 +21,13 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         height: '{{ finalHeight }}px'
       }), { params: { finalHeight: 300 } }),
       transition('* => active', [
-        animate('3s')
+        animate('4s')
       ])
     ])
   ]
 })
 export class GameComponent implements OnInit {
-  game:Game[]=[];
+  games:Game[]=[];
   questions: Question[]=[];
   responses: Response[]=[];
   path: string=`assets/Question_img/`;
@@ -39,8 +39,10 @@ export class GameComponent implements OnInit {
   currentQuestionIndex:number=0;
   currentResponse?:Response;
   reponseShuffled:string[]=[];
-  numberOfQuestionToSelected:number=1;
+  numberOfQuestionToSelected:number=2;
   showPage: number=0;
+  playerScorMap!:Map<number, number>;
+  playerClassementArray: [string, number][] = [];
 
   rectangleCount: number = 5; // Nombre de rectangles
   initialHeight: number = 300; // Largeur initiale du premier rectangle
@@ -70,11 +72,19 @@ export class GameComponent implements OnInit {
       const playerMap = new Map<number, Player>();
       tableau.forEach(player => {
         playerMap.set(Number(player.id_player), player)
+
       });
       this.players = this.playersIds.map(id => playerMap.get(id)!);
+      this.playerScorMap = new Map<number, number>();
+      this.players.forEach(player=>{
+        if (player.id_player != null) {
+          this.playerScorMap.set(Number(player.id_player), 0)
+        }
+      })
       //this.players=tableau;
     });
-    this.generateRectangleHeights();
+
+    //this.generateRectangleHeights();
   }
 
   getResponses():void{
@@ -134,19 +144,41 @@ export class GameComponent implements OnInit {
       //this.router.navigate(['../endgame/']);
       this.ClassementJou();
       this.togglePage(1);
+      this.gameClassement();
+      this.generateRectangleHeights();
     }
   }
 
   scorCalculation(selectedResponse: string):void{
+    /*if(this.currentResponse){
+      if(selectedResponse===this.currentResponse.good_resp){
+        this.players[this.currentPlayerIndex].score=this.players[this.currentPlayerIndex].score+1;
+        console.log("REGARDE TA MAP ", this.playerScorMap);
+      }
+      console.log("Joueur actuel: ",this.players[this.currentPlayerIndex]);
+      this.nextPlayer();
+    }else{
+      console.log("Erreur, pas de reponse actuelle");
+    }*/
+
     if(this.currentResponse){
       if(selectedResponse===this.currentResponse.good_resp){
         this.players[this.currentPlayerIndex].score=this.players[this.currentPlayerIndex].score+1;
+
+        const player_id=Number(this.players[this.currentPlayerIndex].id_player);
+        if(this.playerScorMap.has(player_id)){
+          let currentScor=this.playerScorMap.get(player_id);
+          currentScor= currentScor ? currentScor + 1 : 1;
+          this.playerScorMap.set(player_id,currentScor);
+        }
+        console.log("REGARDE TA MAP ", this.playerScorMap);
       }
       console.log("Joueur actuel: ",this.players[this.currentPlayerIndex]);
       this.nextPlayer();
     }else{
       console.log("Erreur, pas de reponse actuelle");
     }
+
   }
   display():void{
     console.log("Liste des joueurs recup mon gars", this.players);
@@ -155,42 +187,65 @@ export class GameComponent implements OnInit {
   ClassementJou(): void {
     this.players.sort((a, b) => b.score - a.score);
 
-      let lastScore = 0;
-      let lastRank = 0;
-      let gap = 1;
+    let lastScore = 0;
+    let lastRank = 0;
+    let gap = 1;
 
-      this.players.forEach((player, index) => {
-        if (player.score === lastScore) {
+    this.players.forEach((player, index) => {
+      if (player.score === lastScore) {
 
-          player.classement = lastRank;
-          gap++;
-        } else {
+        player.classement = lastRank;
+        gap++;
+      } else {
 
-          lastRank += gap;
-          player.classement = lastRank;
-          lastScore = player.score;
-          gap = 1;
-        }
+        lastRank += gap;
+        player.classement = lastRank;
+        lastScore = player.score;
+        gap = 1;
+      }
 
-        this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
+      this.playerService.updatePlayer(player,player.id_player as bigint).subscribe(
+        {
+          next : (nv)=>
           {
-            next : (nv)=>
-            {
-              console.log('Mise à jour réussie', nv);
-              this.players = this.players.map(_player =>
-                _player.id_player === nv.id_player ? nv : _player
-              );
-            }
-          });
-      });
-
+            console.log('Mise à jour réussie', nv);
+            this.players = this.players.map(_player =>
+              _player.id_player === nv.id_player ? nv : _player
+            );
+          }
+        });
+    });
 
   }
 
+  gameClassement():void{
+    // Convertir playerScorMap en un tableau d'entrées
+    let playerScorArray = Array.from(this.playerScorMap.entries());
+
+    // Trier le tableau en fonction des valeurs (scores) de manière décroissante
+    playerScorArray.sort((a, b) => b[1] - a[1]); // Tri des scores de manière décroissante
+
+    // Recréer une nouvelle Map à partir du tableau trié
+    this.playerScorMap = new Map<number, number>(playerScorArray);
+
+    let pseudoMap = new Map<string, number>;
+
+    this.playerScorMap.forEach((value, key) => {
+      // Rechercher dans le tableau players l'objet joueur correspondant à cette clé (id)
+      let player = this.players.find(player =>Number (player.id_player) === key);
+
+      // Vérifier si le joueur correspondant a été trouvé
+      if (player) {
+        // Ajouter le pseudonyme du joueur au tableau de pseudonymes
+        pseudoMap.set(player.pseudo,value);
+      }
+    });
+     this.playerClassementArray=Array.from(pseudoMap.entries());
+}
   generateRectangleHeights(): void {
-    if(this.numberPlayer){
-      for (let i = 0; i < this.numberPlayer; i++) {
-        this.rectangleHeights.push(this.initialHeight - i * 25); // Diminuer la hauteur de 25px pour chaque rectangle
+    if (this.numberPlayer && this.players) {
+      for (let i = 0; i < this.numberPlayer; i++) {// on multiplie le scor du joueur par 10 pour un meilleur affichage
+        this.rectangleHeights.push(20 * this.playerClassementArray[i][1]);
       }
     }
   }
@@ -201,6 +256,49 @@ export class GameComponent implements OnInit {
     };
   }
 
+  saveGame():void{
+    /*if(this.players.length==2){
+      const game:Game={
+        id_p1:this.players[0].id_player,
+        id_p2:this.players[1].id_player,
+        id_cat:this.id_cat,
+      }
+      this.gameService.Save(game);
+    }else{
+      if(this.players.length==3){
+        const game:Game={
+          id_p1:this.players[0].id_player,
+          id_p2:this.players[1].id_player,
+          id_p3:this.players[2].id_player,
+          id_cat:this.id_cat,
+        }
+        this.gameService.Save(game);
+      }else{
+        if(this.players.length==4){
+          const game:Game={
+            id_p1:this.players[0].id_player,
+            id_p2:this.players[1].id_player,
+            id_p3:this.players[2].id_player,
+            id_p4:this.players[3].id_player,
+            id_cat:this.id_cat,
+          }
+          this.gameService.Save(game);
+        }
+      }
+    }*/
+
+    const game: { [key: string]: number | bigint| undefined } = {
+      id_cat: this.id_cat
+    };
+
+    for (let i = 0; i < Math.min(this.players.length, 4); i++) {
+      game[`id_p${i + 1}`] = this.players[i].id_player;
+      console.log("Chaque ID",this.players[i].id_player)
+    }
+    this.gameService.Save(game);
+    //this.gameService.Save();
+    console.log("SAUVEGARDER");
+}
 
 
 
