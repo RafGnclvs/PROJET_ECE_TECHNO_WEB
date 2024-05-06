@@ -295,9 +295,10 @@ export class GameComponent implements OnInit {
       game[`id_p${i + 1}`] = this.players[i].id_player;
       console.log("Chaque ID",this.players[i].id_player)
     }
-    this.gameService.Save(game);
-    //this.gameService.Save();
-    console.log("SAUVEGARDER");
+
+    this.gameService.Save(game).subscribe(value => {
+      this.games.push(value);})
+    console.log("SAUVEGARDER",game);
 }
 
 
