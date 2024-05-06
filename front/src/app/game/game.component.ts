@@ -298,7 +298,6 @@ export class GameComponent implements OnInit {
 
     this.gameService.Save(game).subscribe(value => {
       this.games.push(value);})
-    //this.gameService.Save();
     console.log("SAUVEGARDER",game);
 }
 
