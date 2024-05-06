@@ -1,55 +1,61 @@
 
-<p>admin works icii!</p>
-
-<div *ngIf="showPage===0">
-  <ul>
-    <li><button class="button" routerLink="../player">Modifier les users</button></li>
-    <li> <button class="button" (click)="ModifierPage()">Modifier les questions</button></li>
-  </ul>
-</div>
-
-
-<div *ngIf="showPage===1">
-  <button  (click)="ArrierePage()">Retour à la page précédente</button>
-  <h1 class="deco">Choix de la catégorie</h1>
-  <ul>
-    <li *ngFor="let categorie of category">
-      <button class="button" (click)="selectIdCategory(categorie.id_category)">{{categorie.name}}</button>
-    </li>
-  </ul>
-</div>
-
-<div *ngIf="showPage===2">
-  <button  (click)="ArrierePage()">Retour à la page précédente</button>
-  <button class="button" (click)="QuestionPage()"> Ajouter une question</button>
-    <div *ngFor="let question of question">
-     <div *ngIf="question.id_cat===currentCategory">
-      <p>  <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image"></p>
-
-      <a mat-raised-button color="primary" [routerLink]="['../question-details/',question.id_question,question.id_res]">Modify</a>
-      <button mat-icon-button color="warn" (click)="SupprimerQuestion(question.id_question)" ><mat-icon>delete</mat-icon></button>
-    </div>
+<div *ngIf="showPage===0" class="Accueil">
+  <div class="Bouton-Affichage">
+    <button class="BTN_NET" routerLink="../player">Modifier les users</button>
+   <button class="BTN_NET" (click)="ModifierPage()">Modifier les questions</button>
   </div>
 </div>
 
 
+<div *ngIf="showPage===1" class="Category">
+  <button class="BTN_NET" (click)="ArrierePage()">Retour à la page précédente</button>
+  <h1 class="deco">Choix de la catégorie</h1>
+  <div class="Bouton-Affichage">
+    <div *ngFor="let categorie of category">
+      <button class="BTN_NET" (click)="selectIdCategory(categorie.id_category)">{{categorie.name}}</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showPage===2">
+  <button class="BTN_NET" (click)="ArrierePage()">Retour à la page précédente</button>
+  <br>
+  <button class="BTN_NET" (click)="QuestionPage()"> Ajouter une question</button>
+  <div class="Questions">
+    <div *ngFor="let question of question" class="Elem">
+       <div *ngIf="question.id_cat===currentCategory" class="question-content">
+         <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image">
+        <a mat-raised-button color="primary" [routerLink]="['../question-details/',question.id_question,question.id_res]">Modify</a>
+        <button mat-icon-button color="warn" (click)="SupprimerQuestion(question.id_question)" ><mat-icon>delete</mat-icon></button>
+       </div>
+     </div>
+  </div>
+
+</div>
+
 
 <div *ngIf="showPage===3">
   <p>Ghita est au top</p>
-  <button  (click)="ArrierePage()">Retour à la page précédente</button>
-  <div>Pour de nouvelles questions : </div>
+  <button class="BTN_NET" (click)="ArrierePage()">Retour à la page précédente</button>
   <div class="form-container">
-    <div *ngFor="let Nom of NomsImages">
-      <p>{{Nom}}</p>
-    </div>
+    <div>Pour de nouvelles questions :</div>
+    <ul>
+      <li *ngFor="let Nom of NomsImages">
+        {{Nom}}
+      </li>
+    </ul>
+
     <div>Pour d'anciennes questions avec différentes réponses:</div>
-    <div>
-      <ng-container *ngFor="let Q of question; let last = last">
-        <ng-container *ngIf="Q.id_cat === currentCategory">
-          {{ Q.name_img }}<span *ngIf="!last"> ** </span>
+    <ul>
+      <div *ngFor="let Q of question; ">
+        <li><ng-container *ngIf="Q.id_cat === currentCategory">
+          {{ Q.name_img }}
         </ng-container>
-      </ng-container>
-    </div>
+        </li>
+
+      </div>
+    </ul>
+
 
     <form (ngSubmit)="AjouterQuestion()" id="questionResponseForm">
 

@@ -16,6 +16,8 @@ export class QuestionDetailsComponent implements OnInit {
 
   id?: number;
   id_rep? :number ;
+  id_categorie? :number;
+  showPage? : number=0;
   path: string=`assets/Question_img/`;
   questions : Question[] = [];
   responses : Response[] = [];
@@ -60,7 +62,7 @@ export class QuestionDetailsComponent implements OnInit {
             return _rep;
           }
         );
-        console.log("SELECTED RESPONSE", updatedQuestion.resp1 );
+
       },
     });
 
@@ -75,6 +77,7 @@ export class QuestionDetailsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
      this.id = Number(routeParams.get('id'));
      this.id_rep=Number(routeParams.get('id_rep'));
+
     this.questionService.findAll().subscribe(tableau => this.questions=tableau);
     this.responseService.findAll().subscribe(tableau => this.responses=tableau);
 
