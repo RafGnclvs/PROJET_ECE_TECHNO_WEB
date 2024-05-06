@@ -1,21 +1,20 @@
 package com.takima.backskeleton.services;
 
-import com.takima.backskeleton.DAO.CategoryDao;
 import com.takima.backskeleton.DAO.GameDao;
-import com.takima.backskeleton.models.Category;
 import com.takima.backskeleton.models.Game;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 @RequiredArgsConstructor
 public class GameService {
     private final GameDao gameDao;
-
-   // public List<Category> findAll() {return categoryDao.findAll();}
 
     public List<Game> findAll() {
         Iterable<Game> it = gameDao.findAll();
@@ -24,4 +23,8 @@ public class GameService {
         return gm;
     }
 
+    @Transactional
+    public Game addGame(Game game) {
+        return gameDao.save(game);
+    }
 }
