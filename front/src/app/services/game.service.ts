@@ -8,6 +8,7 @@ import { HttpClient } from "@angular/common/http"
 })
 export class GameService {
   constructor(private http: HttpClient) {
+
   }
 
   private gameUrl = "http://localhost:8080/game"
@@ -16,5 +17,8 @@ export class GameService {
     return this.http.get<Game[]>(this.gameUrl)
   }
 
+  Save(game: Game): Observable<Game> {
+    return this.http.post<Game>(this.gameUrl, game)
+  }
 
 }

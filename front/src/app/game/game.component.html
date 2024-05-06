@@ -13,18 +13,6 @@
 </div>
 
 
-<!--<ng-container *ngFor="let response of responses">
-      <ng-container *ngIf="questions[currentQuestionIndex].id_res===(response.id_response || 0)">
-        <h2> Joueur " {{ players[currentPlayerIndex].pseudo }}": Faites votre choix </h2>
-        <ul>
-          <li><button class="button" (click)="scorCalculation(response.resp1)">{{response.resp1}}</button></li>
-          <li><button class="button" (click)="scorCalculation(response.resp2)">{{response.resp2}}</button></li>
-          <li><button class="button" (click)="scorCalculation(response.resp3)">{{response.resp3}}</button></li>
-          <li><button class="button" (click)="nextPlayer()">{{response.good_resp}}</button></li>
-        </ul>
-      </ng-container>
-    </ng-container>-->
-
 <!--<div *ngFor="let question of questions">
 
 
@@ -76,18 +64,19 @@
   </div>
 </div>-->
 
-<div *ngIf="showPage === 1">
+<div class="page-container" *ngIf="showPage === 1">
+  <h1 class="deco">Podium</h1>
   <div class="rectangle-container">
-    <div *ngFor="let height of rectangleHeights; let i = index" class="rectangle-wrapper">
+    <div *ngFor="let height of rectangleHeights;  let i = index" class="rectangle-wrapper">
       <table>
         <tr>
-          <td>{{ players[i].pseudo }}</td>
-          <td>{{ players[i].score }}</td>
-          <td>{{ players[i].classement }}</td>
+          <td>{{playerClassementArray[i][0] }}</td> <!-- Pseudo -->
+          <td>{{playerClassementArray[i][1] }}</td> <!-- Scor -->
         </tr>
       </table>
       <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)">
       </div>
     </div>
   </div>
+  <button class="button" [routerLink]="'/choice'" (click)="saveGame()">Rejouer</button>
 </div>

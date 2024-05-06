@@ -59,6 +59,12 @@ h2{
   padding-top: 30px;
   margin-bottom: 45px;
 }
+
+td{
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
 .page-container {
   background-color: #000;
   font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix */
@@ -120,12 +126,14 @@ ul {
 }
 
 .rectangle {
-  width: 50px;
-  height: 50px;
-  background-color: blue;
+  width: 100px;
+  height: 0px;
+  background-color: #e50914;
   justify-content: center;
   text-align: center;
-  animation: increaseHeightAnimation 3s forwards;
+  animation: increaseHeightAnimation 1s forwards;
+
+  margin-bottom: 150px;
 }
 
 .rectangle-wrapper {
