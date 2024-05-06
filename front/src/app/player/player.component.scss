@@ -1,4 +1,18 @@
-
+.BTN_NET {
+  min-width: 250px;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  background-color: #e50914; /* Rouge Netflix */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold; /* Texte en gras */
+  margin-top: 20px; /* Marge en haut pour l'espacement */
+  margin-right: 10px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s; /* Transition douce pour le survol */
+}
 .BTN_NET:hover {
   background-color: #f40612; /* Rouge un peu plus clair au survol */
 }
@@ -14,8 +28,6 @@
 }
 body {
   font-family: Arial, sans-serif;
-
-
 }
 
 .btn-net {
@@ -83,23 +95,7 @@ label {
   box-sizing: border-box; /* S'assure que le padding et la bordure sont inclus dans la largeur */
 }
 
-.BTN_NET {
 
-  min-width: 250px;
-
-  font-family: "Netflix Sans", Arial, sans-serif;
-  background-color: #e50914; /* Rouge Netflix */
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold; /* Texte en gras */
-  margin-top: 20px; /* Marge en haut pour l'espacement */
-  margin-right: 10px;
-  margin-bottom: 20px;
-  transition: background-color 0.3s; /* Transition douce pour le survol */
-}
 .Bouton-Affichage {
   display: flex;
   flex-direction: column;

@@ -1,40 +1,7 @@
 
 
-<!--
-<p>question-details works!</p>
-<p>ID QUESTION {{id}}</p>
-
-<p>ID RESPONSE {{id_rep}}</p>
-
-<div *ngFor="let quest of questions">
-
-  <div *ngIf="quest.id_question===id">
-    <img [src]="path+quest.name_img+'.png'" alt="Description de l'image" class="game-image">
-    <div *ngFor="let rep of responses" >
-      <div *ngIf="rep.id_response===id_rep">
-        <p>Réponse A : {{rep.resp1}}</p>
-        <p>Réponse B : {{rep.resp2}}</p>
-        <p>Réponse C : {{rep.resp3}}</p>
-        <p>Réponse D: {{rep.good_resp}}</p>
-        <a mat-raised-button color="primary" >Modify</a>
-        <button mat-icon-button color="warn" >
-          <mat-icon>delete</mat-icon>
-        </button>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</div>
-class="netflix-style-container"
--->
-
 <link href="https://fonts.cdnfonts.com/css/skarpa" rel="stylesheet">
 <div class="netflix-style-container">
-
 <div *ngFor="let quest of questions">
   <div *ngIf="quest.id_question===id">
     <img [src]="path+quest.name_img+'.png'" alt="Description de l'image" class="game-image">
@@ -56,7 +23,6 @@ class="netflix-style-container"
             <button (click)="editMode = false" >Cancel</button>
           </form>
         </div>
-        <button >Supprimer</button>
       </div>
     </div>
   </div>
