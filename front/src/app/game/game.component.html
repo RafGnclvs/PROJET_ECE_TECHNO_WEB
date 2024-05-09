@@ -24,7 +24,8 @@
         </tr>
       </table>
       <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)" (@increaseHeight.done)="onAnimationEnd($event)">
-        <h1 class="congratulations" *ngIf="showCongratulations">Félicitations <span class="winner">{{ playerClassementArray[0][0] }}</span> !</h1>
+        <h1 class="congratulations" *ngIf="showCongratulations===1">Félicitations <span class="winner">{{ playerClassementArray[0][0] }}</span> !</h1>
+        <h1 class="congratulations" *ngIf="showCongratulations===2">Bravo <span class="winner">Ex aequo</span> !</h1>
       </div>
     </div>
     <div class="container" (click)="launchConfetti()">
@@ -32,6 +33,7 @@
     </div>
   </div>
   <button class="button" [routerLink]="'/choice'" (click)="saveGame()">Rejouer</button>
+  <button class="button" routerLink="" (click)="saveGame()">Acueil</button>
 
 </div>
 

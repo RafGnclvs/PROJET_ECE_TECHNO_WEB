@@ -41,13 +41,13 @@ export class GameComponent implements OnInit {
   currentQuestionIndex:number=0;
   currentResponse?:Response;
   reponseShuffled:string[]=[];
-  numberOfQuestionToSelected:number=2;
+  numberOfQuestionToSelected:number=5;
   showPage: number=0;
   playerScorMap!:Map<number, number>;
   playerClassementArray: [string, number][] = [];
 
   rectangleHeights: number[] = [];
-  showCongratulations = false;
+  showCongratulations = 0;
 
   confettis: { x: number, y: number, color: string }[] = [];
   colors = ['#ffcc00', '#ff6699', '#66ff66', '#66ccff', '#cc66ff'];
@@ -240,8 +240,8 @@ export class GameComponent implements OnInit {
         pseudoMap.set(player.pseudo,value);
       }
     });
-     this.playerClassementArray=Array.from(pseudoMap.entries());
-}
+    this.playerClassementArray=Array.from(pseudoMap.entries());
+  }
   generateRectangleHeights(): void {
     if (this.numberPlayer && this.players) {
       for (let i = 0; i < this.numberPlayer; i++) {// on multiplie le scor du joueur par 10 pour un meilleur affichage
@@ -278,7 +278,11 @@ export class GameComponent implements OnInit {
   onAnimationEnd(event: AnimationEvent) {
     if (event.toState === 'active') {
       // Lancement des confettis après la fin de l'animation
-      this.showCongratulations = true;
+      if(this.playerClassementArray[0][1]===this.playerClassementArray[1][1]){
+        this.showCongratulations=2;
+      }else {
+        this.showCongratulations = 1;
+      }
       this.launchConfetti();
     }
   }
@@ -296,7 +300,7 @@ export class GameComponent implements OnInit {
   }
 
   moveConfetti() {
-    const duration = 200; // Durée en millisecondes pendant laquelle les confettis tombent
+    const duration = 100; // Durée en millisecondes pendant laquelle les confettis tombent
 
     setTimeout(() => {
       // Supprimez tous les confettis existants
