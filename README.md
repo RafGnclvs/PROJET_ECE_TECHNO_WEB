@@ -82,6 +82,7 @@ La liste des users va s'afficher et vous aurez le choix entre :
 - Modifier les données d'un joueur (pseudo et score)
 
 **!!Attention 1!!** La modification implique la modification **obligatoire** du pseudo, sinon la modification ne pourra être validé.
+
 **!!Attention 2!!** La supression d'un joueur impliquera la suppression de toutes les parties auxquelles il aura participé.
 
 ### Modifier les questions
