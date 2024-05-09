@@ -8,6 +8,8 @@ import { Response } from "../models/response.model"
 import { ResponseService } from "../services/response.service"
 import {Game} from "../models/game.model"
 import {GameService} from "../services/game.service"
+import {Player} from "../models/player.model"
+import {PlayerService} from "../services/player.service"
 
 @Component({
   selector: 'epf-admin',
@@ -20,6 +22,7 @@ export class AdminComponent implements OnInit {
   question : Question[] = [];
   response : Response[] = [];
   games:Game[]=[];
+  players: Player[]=[];
   showPage: number=0;
   currentCategory: number=0;
   NomsImages : string[]=["Scar_img","Tom_Sawyer_img","Mike_Ross_img"];
@@ -50,7 +53,7 @@ export class AdminComponent implements OnInit {
     this.showPage=page;
   }
 
-  constructor(private categoryService : CategoryService, private questionService : QuestionService,private responseService : ResponseService, private gameService:GameService) {
+  constructor(private categoryService : CategoryService, private questionService : QuestionService,private responseService : ResponseService, private gameService:GameService, private playerService:PlayerService) {
 
   }
   Initialisation():void
@@ -67,6 +70,7 @@ export class AdminComponent implements OnInit {
     this.questionService.findAll().subscribe(tableau => this.question=tableau);
     this.responseService.findAll().subscribe(tableau => this.response=tableau);
     this.gameService.findAll().subscribe(tableau=>this.games=tableau);
+    this.playerService.findAll().subscribe(tableau=>this.players=tableau);
   }
 
 
@@ -90,13 +94,9 @@ export class AdminComponent implements OnInit {
   AjouterQuestion():void
   {
     this.NewQuest.id_cat = this.currentCategory;
-
-
     this.responseService.addResponse(this.NewRep).subscribe({
       next: (value) => {
         this.response.push(value);
-
-
         console.log(value);
         this.NewQuest.id_res = Number(value.id_response);
         this.questionService.addQuestion(this.NewQuest).subscribe({
@@ -109,23 +109,25 @@ export class AdminComponent implements OnInit {
 
     });
 
-
-
   }
 
   SupprimerQuestion(idQuestion : bigint | undefined): void {
       if (typeof idQuestion !== 'undefined') {
-
         this.questionService.deleteQuestion(idQuestion).subscribe(() => {
-
           this.question = this.question.filter(Q => Q.id_question !== idQuestion);
         });
       } else {
         console.error('Tentative de suppression d’un joueur sans ID valide.');
-
       }
-    }
+  }
 
+  getPlayerPseudo(playerId: bigint | undefined): string | undefined {
+    if (playerId === undefined) {
+      return undefined;
+    }
+    const player = this.players.find(player => player.id_player === playerId);
+    return player ? player.pseudo : undefined;
+  }
   protected readonly Q = Q
 }
 
