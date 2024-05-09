@@ -69,10 +69,14 @@ create table response
 create table Game
 (
     id_game SERIAL PRIMARY KEY,
-    id_p1 SERIAL REFERENCES player(id_player),
-    id_p2 SERIAL REFERENCES player(id_player),
-    id_p3 SERIAL REFERENCES player(id_player),
-    id_p4 SERIAL REFERENCES player(id_player),
+    id_p1 BIGINT REFERENCES player(id_player),
+    p1_score INTEGER,
+    id_p2 BIGINT REFERENCES player(id_player),
+    p2_score INTEGER,
+    id_p3 BIGINT REFERENCES player(id_player),
+    p3_score INTEGER,
+    id_p4 BIGINT REFERENCES player(id_player),
+    p4_score INTEGER,
     id_cat SERIAL REFERENCES category(id_category)
 );
 
