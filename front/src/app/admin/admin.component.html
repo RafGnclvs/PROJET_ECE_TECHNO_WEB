@@ -2,7 +2,8 @@
 <div *ngIf="showPage===0" class="Accueil">
   <div class="Bouton-Affichage">
     <button class="BTN_NET" routerLink="../player">Modifier les users</button>
-   <button class="BTN_NET" (click)="ModifierPage()">Modifier les questions</button>
+    <button class="BTN_NET" (click)="ModifierPage()">Modifier les questions</button>
+    <button class="BTN_NET" (click)="togglePage(4)">Historique de parties</button>
   </div>
 </div>
 
@@ -80,5 +81,39 @@
     </form>
   </div>
 
+</div>
+
+<div *ngIf="showPage===4">
+  <button class="BTN_NET" (click)="togglePage(0)">Retour à la page précédente</button>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>ID Catégorie</th>
+      <th>ID Joueur 1</th>
+      <th>Score Joueur 1</th>
+      <th>ID Joueur 2</th>
+      <th>Score Joueur 2</th>
+      <th>ID Joueur 3</th>
+      <th>Score Joueur 3</th>
+      <th>ID Joueur 4</th>
+      <th>Score Joueur 4</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let game of games">
+      <td>{{ game.id_game }}</td>
+      <td>{{ game.id_cat }}</td>
+      <td>{{ game.id_p1 }}</td>
+      <td>{{ game.p1_score }}</td>
+      <td>{{ game.id_p2 }}</td>
+      <td>{{ game.p2_score }}</td>
+      <td>{{ game.id_p3 !== null ? game.id_p3 : 'none' }}</td>
+      <td>{{ game.p3_score }}</td>
+      <td>{{ game.id_p4 !== null ? game.id_p4 : 'none' }}</td>
+      <td>{{ game.p4_score }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 

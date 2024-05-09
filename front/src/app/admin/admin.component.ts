@@ -6,6 +6,8 @@ import { QuestionService } from "../services/question.service"
 import { Q } from "@angular/cdk/keycodes"
 import { Response } from "../models/response.model"
 import { ResponseService } from "../services/response.service"
+import {Game} from "../models/game.model"
+import {GameService} from "../services/game.service"
 
 @Component({
   selector: 'epf-admin',
@@ -17,6 +19,7 @@ export class AdminComponent implements OnInit {
   category : Category[] = [];
   question : Question[] = [];
   response : Response[] = [];
+  games:Game[]=[];
   showPage: number=0;
   currentCategory: number=0;
   NomsImages : string[]=["Scar_img","Tom_Sawyer_img","Mike_Ross_img"];
@@ -47,7 +50,7 @@ export class AdminComponent implements OnInit {
     this.showPage=page;
   }
 
-  constructor(private categoryService : CategoryService, private questionService : QuestionService,private responseService : ResponseService) {
+  constructor(private categoryService : CategoryService, private questionService : QuestionService,private responseService : ResponseService, private gameService:GameService) {
 
   }
   Initialisation():void
@@ -63,7 +66,7 @@ export class AdminComponent implements OnInit {
     this.categoryService.findAll().subscribe(tableau => this.category=tableau);
     this.questionService.findAll().subscribe(tableau => this.question=tableau);
     this.responseService.findAll().subscribe(tableau => this.response=tableau);
-
+    this.gameService.findAll().subscribe(tableau=>this.games=tableau);
   }
 
 
@@ -77,9 +80,9 @@ export class AdminComponent implements OnInit {
   }
 
   ModifierPage():void
-    {
-      this.togglePage(1);
-    }
+  {
+    this.togglePage(1);
+  }
   QuestionPage():void
   {
     this.togglePage(3);
@@ -122,7 +125,6 @@ export class AdminComponent implements OnInit {
 
       }
     }
-
 
   protected readonly Q = Q
 }

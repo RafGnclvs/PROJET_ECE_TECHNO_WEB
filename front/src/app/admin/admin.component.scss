@@ -1,3 +1,25 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center; /* Centrer le texte */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
 .BTN_NET {
   min-width: 250px;
   font-family: "Netflix Sans", Arial, sans-serif;

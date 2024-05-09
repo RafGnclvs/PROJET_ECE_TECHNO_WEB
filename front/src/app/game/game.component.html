@@ -13,57 +13,6 @@
 </div>
 
 
-<!--<div *ngFor="let question of questions">
-
-
-  <img [src]="path+question.name_img+'.png'" alt="Description de l'image" class="game-image">
-  <button class="button" (click)="display()">Confirmer</button>
-</div>
-
-<div *ngIf="showPage===1">
-
-    <table>
-      <thead>
-      <tr>
-        <th>Pseudo</th>
-        <th>Score</th>
-        <th>Classement</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let player of players">
-        <td>{{ player.pseudo }}</td>
-        <td>{{ player.score }}</td>
-        <td>{{ player.classement }}</td>
-        <td>
-      </tr>
-      </tbody>
-    </table>
-</div>
-
-<div *ngIf="showPage === 1">
-  <div class="rectangle-container">
-    <div class="rectangle" *ngFor="let height of rectangleHeights; let i = index" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)">
-
-    <ul>
-      <li>PSEUDO 1</li>
-    </ul>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="showPage === 1">
-  <div class="rectangle-container">
-    <div *ngFor="let height of rectangleHeights; let i = index" class="rectangle-wrapper">
-      <ul>
-        <li>{{ players[i].pseudo }}   {{ players[i].score }}  {{ players[i].classement }}</li>
-      </ul>
-      <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)">
-      </div>
-    </div>
-  </div>
-</div>-->
-
 <div class="page-container" *ngIf="showPage === 1">
   <h1 class="deco">Podium</h1>
   <div class="rectangle-container">
@@ -74,9 +23,15 @@
           <td>{{playerClassementArray[i][1] }}</td> <!-- Scor -->
         </tr>
       </table>
-      <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)">
+      <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)" (@increaseHeight.done)="onAnimationEnd($event)">
+        <h1 class="congratulations" *ngIf="showCongratulations">Félicitations <span class="winner">{{ playerClassementArray[0][0] }}</span> !</h1>
       </div>
+    </div>
+    <div class="container" (click)="launchConfetti()">
+      <div class="confetti" *ngFor="let conf of confettis; let i = index" [style.left]="conf.x + 'px'" [style.top]="conf.y + 'px'" [style.background-color]="conf.color"></div>
     </div>
   </div>
   <button class="button" [routerLink]="'/choice'" (click)="saveGame()">Rejouer</button>
+
 </div>
+
