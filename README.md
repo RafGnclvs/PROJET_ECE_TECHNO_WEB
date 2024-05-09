@@ -51,19 +51,22 @@ Un joueur peut effectuer deux actions sur cette API :
 En lançant notre site, vous tomberez tout de suite sur la page utilisateur pour lancer une partie (si, plus tard, vous souhaitez revenir sur cette page, il vous suffira de cliquer sur le logo Netflix situé en haut à gauche de la page).
 
 Pour lancer une partie, rien de plus simple : 
-- Cliquer sur le bouton "COMMENCER" 
-- Sélectionner une catégorie de questions parmi les trois suivantes : Séries, Films ou Animés 
-- Sélectionner le nombre de joueurs (de 2 à 4) 
-- Rentrer les pseudo des joueurs qui vont participer au quiz
+- Cliquez sur le bouton "COMMENCER" 
+- Sélectionnez une catégorie de questions parmi les trois suivantes : Séries, Films ou Animés 
+- Sélectionnez le nombre de joueurs (de 2 à 4) 
+- Rentrez les pseudo des joueurs qui vont participer au quiz
 - C'est bon, vous pouvez répondre aux questions !
+- A la fin de la partie, on affiche le scor et le classement obtenu par les joueurs durant cette partie
+- Cliquez sur "REJOUER" ou "RETOUR A L'ACCUEIL" pour sauvegarder et quitter la partie. 
 
-### Consulter le score des joueurs
-Pour consulter le score, cliquer sur l'onglet "USER" situé sur la barre de menu du site. Deux bouttons s'afficheront "Ajouter" et "Faire des modifications". Ces deux boutons vous permettront d'accéder aux scores des joueurs, ainsi qu'à leur classement.
+### Consulter le score totale des joueurs
+Pour consulter le score totale obtenue après plusieurs parties, cliquez sur l'onglet "USER" situé sur la barre de menu du site. Deux bouttons s'afficheront "Ajouter" et "Faire des modifications". Ces deux boutons vous permettront d'accéder aux scores des joueurs, ainsi qu'à leur classement.
 
 ## ADMIN
-L'admin peut effectuer deux actions :
+L'admin peut effectuer trois actions :
 - Modifier les users (modifier ou supprimer)
 - Modifier les questions (modifier ou supprimer)
+- Afficher l'historique des parties jouées
 
 ### Modifier les users
 En arrivant sur la page, deux options s'offrent à vous :
@@ -78,7 +81,8 @@ La liste des users va s'afficher et vous aurez le choix entre :
 - Supprimer un joueur 
 - Modifier les données d'un joueur (pseudo et score)
 
-**!!Attention!!** La modification implique la modification **obligatoire** du pseudo, sinon la modification ne pourra être validé.
+**!!Attention 1!!** La modification implique la modification **obligatoire** du pseudo, sinon la modification ne pourra être validé.
+**!!Attention 2!!** La supression d'un joueur impliquera la suppression de toutes les parties auxquelles il aura participé.
 
 ### Modifier les questions
 Sélectionner la catégorie dans laquelle se trouve la question à modifier. Trois options s'offrent à vous :
