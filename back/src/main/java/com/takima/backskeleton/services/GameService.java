@@ -27,4 +27,14 @@ public class GameService {
     public Game addGame(Game game) {
         return gameDao.save(game);
     }
+
+    @Transactional
+    public void deleteById(Long id) {
+        gameDao.deleteById(id);
+    }
+
+    @Transactional
+    public void deleteByIds(Long[] ids) {
+        gameDao.deleteAllById(List.of(ids));
+    }
 }

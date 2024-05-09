@@ -8,7 +8,9 @@ import {ResponseService} from "../services/response.service"
 import { ActivatedRoute, Router } from "@angular/router"
 import { Player } from "../models/player.model"
 import { PlayerService } from "../services/player.service"
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition, AnimationEvent } from '@angular/animations';
+
+
 
 
 @Component({
@@ -21,7 +23,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         height: '{{ finalHeight }}px'
       }), { params: { finalHeight: 300 } }),
       transition('* => active', [
-        animate('4s')
+        animate('2s')
       ])
     ])
   ]
@@ -44,10 +46,11 @@ export class GameComponent implements OnInit {
   playerScorMap!:Map<number, number>;
   playerClassementArray: [string, number][] = [];
 
-  rectangleCount: number = 5; // Nombre de rectangles
-  initialHeight: number = 300; // Largeur initiale du premier rectangle
   rectangleHeights: number[] = [];
-  rectangleState = 'active';
+  showCongratulations = false;
+
+  confettis: { x: number, y: number, color: string }[] = [];
+  colors = ['#ffcc00', '#ff6699', '#66ff66', '#66ccff', '#cc66ff'];
   constructor(private gameService:GameService, private questionService : QuestionService,private responseService : ResponseService,private playerService: PlayerService,private route: ActivatedRoute, private  router: Router) {}
   togglePage(page: number): void {
     this.showPage=page;
@@ -60,7 +63,6 @@ export class GameComponent implements OnInit {
     this.playersIds=String(routeParams.get('playersIds')).split(',').map(id=>+id);
     console.log('Id de la catégorie sélectionné :', this.id_cat);
     console.log('Nombre de joueurs sélectionné :', this.numberPlayer);
-    //this.gameService.findAll().subscribe(tableau =>this.game=tableau);
     this.questionService.getByIdCategory(this.id_cat).subscribe(tableau => {
       const shuffledQuestion=tableau;
       shuffledQuestion.sort(()=>Math.random()-0.5);
@@ -81,10 +83,8 @@ export class GameComponent implements OnInit {
           this.playerScorMap.set(Number(player.id_player), 0)
         }
       })
-      //this.players=tableau;
     });
 
-    //this.generateRectangleHeights();
   }
 
   getResponses():void{
@@ -257,50 +257,56 @@ export class GameComponent implements OnInit {
   }
 
   saveGame():void{
-    /*if(this.players.length==2){
-      const game:Game={
-        id_p1:this.players[0].id_player,
-        id_p2:this.players[1].id_player,
-        id_cat:this.id_cat,
-      }
-      this.gameService.Save(game);
-    }else{
-      if(this.players.length==3){
-        const game:Game={
-          id_p1:this.players[0].id_player,
-          id_p2:this.players[1].id_player,
-          id_p3:this.players[2].id_player,
-          id_cat:this.id_cat,
-        }
-        this.gameService.Save(game);
-      }else{
-        if(this.players.length==4){
-          const game:Game={
-            id_p1:this.players[0].id_player,
-            id_p2:this.players[1].id_player,
-            id_p3:this.players[2].id_player,
-            id_p4:this.players[3].id_player,
-            id_cat:this.id_cat,
-          }
-          this.gameService.Save(game);
-        }
-      }
-    }*/
-
-    const game: { [key: string]: number | bigint| undefined } = {
+    const game: { [key: string]: number | bigint | null | undefined } = {
       id_cat: this.id_cat
     };
 
     for (let i = 0; i < Math.min(this.players.length, 4); i++) {
-      game[`id_p${i + 1}`] = this.players[i].id_player;
-      console.log("Chaque ID",this.players[i].id_player)
-    }
+      const playerIdKey = `id_p${i + 1}`;
+      const playerScoreKey = `p${i + 1}_score`;
 
+      game[playerIdKey] = this.players[i] ? this.players[i].id_player : null;
+      game[playerScoreKey] = this.players[i] ? this.playerScorMap.get(Number(this.players[i].id_player)) : null;
+
+      console.log("Joueur", i + 1, "ID:", game[playerIdKey], "Score:", game[playerScoreKey]);
+    }
     this.gameService.Save(game).subscribe(value => {
       this.games.push(value);})
     console.log("SAUVEGARDER",game);
-}
+  }
 
+  onAnimationEnd(event: AnimationEvent) {
+    if (event.toState === 'active') {
+      // Lancement des confettis après la fin de l'animation
+      this.showCongratulations = true;
+      this.launchConfetti();
+    }
+  }
+  launchConfetti() {
+    for (let i = 0; i < 300; i++) {
+      this.confettis.push({
+        x: Math.random() * window.innerWidth,
+        y: -Math.random() * window.innerHeight, // confettis start above the container
+        color: this.colors[Math.floor(Math.random() * this.colors.length)]
+      });
+    }
+
+    // Démarrez le mouvement des confettis
+    this.moveConfetti();
+  }
+
+  moveConfetti() {
+    const duration = 200; // Durée en millisecondes pendant laquelle les confettis tombent
+
+    setTimeout(() => {
+      // Supprimez tous les confettis existants
+      this.confettis = [];
+
+      // Lancez à nouveau le lancement des confettis après la durée spécifiée
+      this.launchConfetti();
+    }, duration);
+
+  }
 
 
   protected readonly BigInt = BigInt

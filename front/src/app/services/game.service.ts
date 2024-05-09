@@ -21,4 +21,12 @@ export class GameService {
     return this.http.post<Game>(this.gameUrl, game)
   }
 
+  deleteGame(id: bigint): Observable<any> {
+    return this.http.delete(`${this.gameUrl}/${id}`);
+  }
+
+  deleteGames(ids: bigint[]): Observable<any> {
+    return this.http.delete(`${this.gameUrl}//${ids.join(',')}`);
+  }
+
 }

@@ -26,4 +26,14 @@ public class GameController {
     public Game saveGame(@RequestBody Game game) {
         return gameService.addGame(game);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteGame(@PathVariable Long id) {
+        gameService.deleteById(id);
+    }
+
+    @DeleteMapping("//{ids}")
+    public void deleteGames(@PathVariable Long[] ids) {
+        gameService.deleteByIds(ids);
+    }
 }
