@@ -101,15 +101,12 @@ export class GameComponent implements OnInit {
   responseShuffling():void{
     this.currentResponse=this.responses.find(response =>Number(response.id_response)===this.questions[this.currentQuestionIndex].id_res
     );
-    //console.log("ID de la question reçu LELE: ",this.questions[this.currentQuestionIndex].id_res);
-    //console.log("Réponse reçue LELE :", this.currentResponse);
     if(this.currentResponse){
      const allStringResp=Object.values(this.currentResponse).filter(value => typeof value==='string');
      function randomSort(a: string, b: string): number {
        return Math.random() - 0.5;
      }
      this.reponseShuffled=allStringResp.sort(randomSort);
-     //console.log("mes reponses mélangés", this.reponseShuffled);
     }else{
      console.log("Erreur, aucune réponse trouvé pour la question actuelle")
     }
@@ -117,10 +114,6 @@ export class GameComponent implements OnInit {
   }
 
   nextPlayer(): void {
-    /*console.log('ID JOUERU! :',this.currentPlayerIndex);
-    if(this.playersIds){
-      console.log("mon petit ",this.players[this.currentPlayerIndex]);
-    }*/
     this.currentPlayerIndex++;
     if (this.currentPlayerIndex >= this.numberPlayer!) {
       console.log('Question suivante! :');
@@ -129,15 +122,10 @@ export class GameComponent implements OnInit {
     } else {
       console.log('Joueur suivant! :');
     }
-    /*if (this.numberOfPlayers === this.playerInGame.length) {
-      console.log('LA TAILLE DE MON TABLEAU : ',this.playerInGame.length);
-      this.router.navigate(['../game/',this.idCatSelected,this.numberOfPlayers,this.playersIdCast()]);
-    }*/
   }
   nextQuestion(): void {
     this.currentQuestionIndex++;
     if(this.currentQuestionIndex < this.questions.length!) {
-      console.log('Question suivante MON POULET! :');
       this.responseShuffling();
     } else {
       console.log('FIN DES QUESTIONS! :');
@@ -150,17 +138,6 @@ export class GameComponent implements OnInit {
   }
 
   scorCalculation(selectedResponse: string):void{
-    /*if(this.currentResponse){
-      if(selectedResponse===this.currentResponse.good_resp){
-        this.players[this.currentPlayerIndex].score=this.players[this.currentPlayerIndex].score+1;
-        console.log("REGARDE TA MAP ", this.playerScorMap);
-      }
-      console.log("Joueur actuel: ",this.players[this.currentPlayerIndex]);
-      this.nextPlayer();
-    }else{
-      console.log("Erreur, pas de reponse actuelle");
-    }*/
-
     if(this.currentResponse){
       if(selectedResponse===this.currentResponse.good_resp){
         this.players[this.currentPlayerIndex].score=this.players[this.currentPlayerIndex].score+1;
@@ -171,17 +148,13 @@ export class GameComponent implements OnInit {
           currentScor= currentScor ? currentScor + 1 : 1;
           this.playerScorMap.set(player_id,currentScor);
         }
-        console.log("REGARDE TA MAP ", this.playerScorMap);
+        console.log("MAJ Scor", this.playerScorMap);
       }
-      console.log("Joueur actuel: ",this.players[this.currentPlayerIndex]);
       this.nextPlayer();
     }else{
       console.log("Erreur, pas de reponse actuelle");
     }
 
-  }
-  display():void{
-    console.log("Liste des joueurs recup mon gars", this.players);
   }
 
   ClassementJou(): void {

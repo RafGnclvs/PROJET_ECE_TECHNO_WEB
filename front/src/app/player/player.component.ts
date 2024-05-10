@@ -133,7 +133,7 @@ export class PlayerComponent implements OnInit {
       this.playerService.updatePlayer(this.selectedPlayer, this.selectedPlayer.id_player as bigint).subscribe({
         next: (updatedPlayer) => {
 
-          console.log('Mise à jour réussie', updatedPlayer);
+          console.log('Mise à jour du joueur réussie', updatedPlayer);
           this.players = this.players.map(_player =>
              _player.id_player === updatedPlayer.id_player ? updatedPlayer : _player
           );
