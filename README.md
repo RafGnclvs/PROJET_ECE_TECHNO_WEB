@@ -57,7 +57,7 @@ Pour lancer une partie, rien de plus simple :
 - Rentrez les pseudo des joueurs qui vont participer au quiz
 - C'est bon, vous pouvez répondre aux questions !
 - A la fin de la partie, on affiche le scor et le classement obtenu par les joueurs durant cette partie
-- Cliquez sur "REJOUER" ou "ACCUEIL" pour sauvegarder et quitter la partie. 
+- Cliquez sur "REJOUER" ou "REVENIR A L'ACCUEIL" pour sauvegarder et quitter la partie. 
 
 ### Consulter le score totale des joueurs
 Pour consulter le score totale obtenue après plusieurs parties, cliquez sur l'onglet "USER" situé sur la barre de menu du site. Deux bouttons s'afficheront "Ajouter" et "Faire des modifications". Ces deux boutons vous permettront d'accéder aux scores des joueurs, ainsi qu'à leur classement.
