@@ -19,8 +19,9 @@
     <div *ngFor="let height of rectangleHeights;  let i = index" class="rectangle-wrapper">
       <table>
         <tr>
-          <td>{{playerClassementArray[i][0] }}</td> <!-- Pseudo -->
-          <td>{{playerClassementArray[i][1] }}</td> <!-- Scor -->
+          <td>{{playerClassementArray[i][0] }}</td>
+          <td>--</td>
+          <td>{{playerClassementArray[i][1] }} Points</td>
         </tr>
       </table>
       <div class="rectangle" [@increaseHeight]="{ value: 'active', params: { finalHeight: height }}" [ngStyle]="getRectangleStyle(i)" (@increaseHeight.done)="onAnimationEnd($event)">
@@ -33,7 +34,7 @@
     </div>
   </div>
   <button class="button" [routerLink]="'/choice'" (click)="saveGame()">Rejouer</button>
-  <button class="button" routerLink="" (click)="saveGame()">Accueil</button>
+  <button class="button" routerLink="" (click)="saveGame()">Revenir à l'accueil</button>
 
 </div>
 
