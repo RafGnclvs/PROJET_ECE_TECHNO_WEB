@@ -3,7 +3,7 @@
   <div class="Bouton-Affichage">
     <button class="BTN_NET" routerLink="../player">Modifier les users</button>
     <button class="BTN_NET" (click)="ModifierPage()">Modifier les questions</button>
-    <button class="BTN_NET" (click)="togglePage(4)">Historique de parties</button>
+    <button class="BTN_NET" (click)="togglePage(4)">Historique des parties</button>
   </div>
 </div>
 
@@ -36,24 +36,25 @@
 
 
 <div *ngIf="showPage===3">
-  <p>Ghita est au top</p>
   <button class="BTN_NET" (click)="ArrierePage()">Retour à la page précédente</button>
+
+
   <div class="form-container">
-    <div>Pour de nouvelles questions :</div>
+    <div class="Texte">Pour de nouvelles questions :</div>
     <ul>
       <li *ngFor="let Nom of NomsImages">
         {{Nom}}
       </li>
     </ul>
 
-    <div>Pour d'anciennes questions avec différentes réponses:</div>
+    <div class="Texte">Pour d'anciennes questions avec différentes réponses:</div>
     <ul>
       <div *ngFor="let Q of question; ">
-        <li><ng-container *ngIf="Q.id_cat === currentCategory">
-          {{ Q.name_img }}
-        </ng-container>
-        </li>
-
+        <div *ngIf="Q.id_cat === currentCategory">
+          <li>
+            {{ Q.name_img }}
+          </li>
+        </div>
       </div>
     </ul>
 

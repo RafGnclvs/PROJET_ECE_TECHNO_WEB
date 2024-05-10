@@ -5,9 +5,12 @@ table {
 
 th, td {
   padding: 8px;
-  text-align: center; /* Centrer le texte */
+  text-align: center;
 }
-
+li{
+  font-family: "Netflix Sans", Arial, sans-serif;
+  font-weight: bold;
+}
 th {
   background-color: #f2f2f2;
 }
@@ -22,13 +25,13 @@ tr:hover {
 
 .BTN_NET {
   min-width: 250px;
-  font-family: "Netflix Sans", Arial, sans-serif;
   background-color: #e50914; /* Rouge Netflix */
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Netflix Sans", Arial, sans-serif;
   font-weight: bold; /* Texte en gras */
   margin-top: 20px; /* Marge en haut pour l'espacement */
   margin-right: 10px;
@@ -108,34 +111,58 @@ a, button {
   border: 1px solid #e0e0e0;
   padding: 20px;
   border-radius: 8px;
+  display: inline-flex;
 }
 
-/* Mettre en évidence les titres des sections */
+.Texte
+{
+  font-family: "Netflix Sans", Arial, sans-serif;
+  font-weight: bold; /* Texte en gras */
+  margin: 5px;
+  margin-left: 5px;
+}
 h2 {
   color: #333;
   border-bottom: 2px solid #DC143C;
   padding-bottom: 4px;
 }
+.form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* Mettre en évidence les titres des sections */
+h2 {
+  color: #333;
+  border-bottom: 2px solid #dc143c;
+  padding-bottom: 4px;
+}
+
 form {
-  max-width: 500px; /* Limite la largeur du formulaire */
-  margin: 20px auto; /* Centre le formulaire horizontalement et ajoute de la marge autour */
-  padding: 20px; /* Espace à l'intérieur du formulaire */
-  background: #f7f7f7; /* Couleur de fond du formulaire */
-  border-radius: 8px; /* Coins arrondis */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre portée pour un effet élévé */
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-
 label {
-  display: block; /* Rend le label un bloc pour prendre toute la largeur */
-  margin-bottom: 5px; /* Espace sous le label */
-  font-weight: bold; /* Rend le texte du label gras */
-  color: #333; /* Couleur du texte du label */
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
-
-input[type="text"] {
+input[type="text"],
+select {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -145,6 +172,9 @@ input[type="text"] {
 }
 
 
+button {
+  margin-bottom: 20px; /* Plus d'espace sous le bouton Soumettre */
+}
 
 span {
   color: #666;

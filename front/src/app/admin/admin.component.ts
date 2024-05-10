@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
   players: Player[]=[];
   showPage: number=0;
   currentCategory: number=0;
-  NomsImages : string[]=["Scar_img","Tom_Sawyer_img","Mike_Ross_img"];
+  NomsImages : string[]=["Scar_img","Tom_Sawyer_img","Mike_Ross_img","reine_des_neiges_img","pumba_img","obelix_img"];
 
   path: string=`assets/Question_img/`;
 
@@ -49,6 +49,8 @@ export class AdminComponent implements OnInit {
       id_cat:0,
       id_res:0
     };
+
+
   togglePage(page: number): void {
     this.showPage=page;
   }
