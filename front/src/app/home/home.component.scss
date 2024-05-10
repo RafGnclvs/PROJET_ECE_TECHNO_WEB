@@ -1,7 +1,5 @@
-
-
 body {
- background-color: #000;
+  background-color: #000;
   font-family: "Netflix Sans", Arial, sans-serif;
   font-size: 18px;
   text-align: center;
@@ -9,15 +7,14 @@ body {
   padding: 0;
 }
 
-h2
-{
+h2 {
   color: #FFFFFF;
   padding-bottom: 150px;
   text-align: center;
 }
 
 ul {
-  list-style-type: none; /* Supprime les puces des listes non ordonnées */
+  list-style-type: none;
 }
 
 .logo {
@@ -26,6 +23,7 @@ ul {
   max-width: 100%;
   height: auto;
 }
+
 #bgvid {
   position: fixed;
   right: 0;
@@ -34,15 +32,17 @@ ul {
   min-height: 100%;
   width: auto;
   height: auto;
-
   z-index: -1;
   overflow: hidden;
   background-size: cover;
+
 }
-video {
+
+.video {
   display: block;
 
 }
+
 .button {
   text-align: center;
   font-family: "Netflix Sans", Arial, sans-serif; /* Utilisation de la police Netflix */
@@ -54,15 +54,14 @@ video {
   font-size: 18px;
   cursor: pointer;
   transition: transform 0.3s ease;
-
+  font-weight: bold; /* Texte en gras */
 }
 
 .button:hover {
   transform: translateY(-5px);
 }
 
-
-#Aide{
+#Aide {
   color: #FFFFFF;
   text-align: center;
   font-weight: bold;
