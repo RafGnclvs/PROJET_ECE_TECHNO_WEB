@@ -1,6 +1,7 @@
 # README
 Ce projet à été réalisé par **Leticia MOUSSAOUI**, **Ghita OUANNANE** et **Rafael GONCALVES**.
 Nous avons décidé de réaliser un site sur lequel vous pourrez répondre à des quiz sur les thèmes suivants : Films, Séries et Animés.
+Le projet a jour se trouve dans la branche master. Aucun code ne devra être récupéré des autres branches du projet.
 
 ## Setup du projet avant le premier lancement
 ### Étape 1 : Cloner le dépôt sur votre machine
